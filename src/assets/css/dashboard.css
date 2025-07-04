@@ -1,0 +1,72 @@
+/* File: css/dashboard.css */
+
+/* Dashboard Sidebar */
+.sidebar {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.sidebar h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    color: #4B5563;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #059669;
+}
+
+/* Dashboard Cards */
+.card {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card .icon {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 9999px;
+}
+
+/* Charts */
+.dashboard-chart {
+    height: 250px;
+    width: 100%;
+}
+
+/* Activity Log */
+.activity-log {
+    border-top: 1px solid #E5E7EB;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.activity-log-item {
+    display: flex;
+    align-items: start;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1rem;
+}
+
+.activity-log-item:last-child {
+    border-bottom: none;
+}

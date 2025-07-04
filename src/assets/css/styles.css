@@ -1,0 +1,47 @@
+/* Main Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+/* Navigation */
+nav a {
+    transition: color 0.3s ease;
+}
+
+/* Buttons */
+button {
+    transition: background-color 0.3s ease;
+}
+
+/* Modal */
+#loginModal {
+    transition: opacity 0.3s ease;
+}
+
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile Menu */
+#mobileMenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+#mobileMenu.show {
+    max-height: 300px;
+}
+
+/* Card Hover Effects */
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover {
+    transition: all 0.3s ease;
+}

@@ -1,0 +1,161 @@
+c                       <td class="py-2 px-4 border-b">22.5</td>
+                                        <td class="py-2 px-4 border-b">18.3%</td>
+                                        <td class="py-2 px-4 border-b">38.5 kg</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="py-2 px-4 border-b">01/05/2023</td>
+                                        <td class="py-2 px-4 border-b">66.1 kg</td>
+                                        <td class="py-2 px-4 border-b">22.9</td>
+                                        <td class="py-2 px-4 border-b">19.2%</td>
+                                        <td class="py-2 px-4 border-b">37.8 kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 border-b">15/04/2023</td>
+                                        <td class="py-2 px-4 border-b">67.5 kg</td>
+                                        <td class="py-2 px-4 border-b">23.4</td>
+                                        <td class="py-2 px-4 border-b">20.1%</td>
+                                        <td class="py-2 px-4 border-b">37.1 kg</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-gray-800 text-white py-12">
+        <!-- Same footer content as index.html -->
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+    // Initialize user dashboard chart
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('userProgressChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
+                datasets: [
+                    {
+                        label: 'Cân nặng (kg)',
+                        data: [68.5, 67.8, 67.2, 66.1, 65.2],
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Mỡ (%)',
+                        data: [22.5, 21.8, 20.4, 19.2, 18.3],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</body>
+c                       <td class="py-2 px-4 border-b">22.5</td>
+                                        <td class="py-2 px-4 border-b">18.3%</td>
+                                        <td class="py-2 px-4 border-b">38.5 kg</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="py-2 px-4 border-b">01/05/2023</td>
+                                        <td class="py-2 px-4 border-b">66.1 kg</td>
+                                        <td class="py-2 px-4 border-b">22.9</td>
+                                        <td class="py-2 px-4 border-b">19.2%</td>
+                                        <td class="py-2 px-4 border-b">37.8 kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 border-b">15/04/2023</td>
+                                        <td class="py-2 px-4 border-b">67.5 kg</td>
+                                        <td class="py-2 px-4 border-b">23.4</td>
+                                        <td class="py-2 px-4 border-b">20.1%</td>
+                                        <td class="py-2 px-4 border-b">37.1 kg</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-gray-800 text-white py-12">
+        <!-- Same footer content as index.html -->
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+    // Initialize user dashboard chart
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('userProgressChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
+                datasets: [
+                    {
+                        label: 'Cân nặng (kg)',
+                        data: [68.5, 67.8, 67.2, 66.1, 65.2],
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Mỡ (%)',
+                        data: [22.5, 21.8, 20.4, 19.2, 18.3],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>

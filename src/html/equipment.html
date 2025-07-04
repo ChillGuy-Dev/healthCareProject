@@ -1,0 +1,128 @@
+<!-- File: equipment.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hướng dẫn thiết bị | HealthFit</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-50">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8aa5b720-b9db-4c59-b0b7-3794cd60d83c.png" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
+                <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
+                <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
+                <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
+                <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
+                <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
+                <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
+                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a> py-2">Đo chỉ số</a>
+                <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
+                <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
+                <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
+                <a href="products.html" class="text-gray-800 hover:text-green-600 py-2">Sản phẩm</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold mb-6">Hướng dẫn sử dụng thiết bị</h1>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                    <img src="img/may-chay.png" alt="Máy chạy bộ" class="rounded mb-4" />
+                    <h2 class="text-xl font-semibold">Máy chạy bộ</h2>
+                    <p class="text-gray-600 mt-2">Hướng dẫn sử dụng máy chạy bộ an toàn, cách chọn tốc độ và tư thế đúng.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                    <img src="img/xe-dap.png" alt="Xe đạp tập" class="rounded mb-4" />
+                    <h2 class="text-xl font-semibold">Xe đạp tập</h2>
+                    <p class="text-gray-600 mt-2">Cách điều chỉnh ghế, tay cầm và nhịp đạp phù hợp.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                    <img src="img/ta-tay.png" alt="Tạ tay" class="rounded mb-4" />
+                    <h2 class="text-xl font-semibold">Tạ tay</h2>
+                    <p class="text-gray-600 mt-2">Bài tập phổ biến với tạ tay cho người mới bắt đầu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">HealthFit</h3>
+                    <p class="text-gray-300">Nền tảng chăm sóc sức khỏe và thể hình toàn diện, giúp bạn đạt được mục tiêu tập luyện một cách khoa học.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Liên kết nhanh</h3>
+                    <ul class="space-y-2">
+                         <li><a href="index.html" class="text-gray-300 hover:text-white">Trang chủ</a></li>
+                        <li><a href="measurement.html" class="text-gray-300 hover:text-white">Đo chỉ số</a></li>
+                        <li><a href="equipment.html" class="text-gray-300 hover:text-white">Hướng dẫn thiết bị</a></li>
+                        <li><a href="trainers.html" class="text-gray-300 hover:text-white">Huấn luyện viên</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Liên hệ</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
+                            <span class="text-gray-300">123 Lê Lợi, Q1, TP.HCM</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-green-500 mr-2"></i>
+                            <span class="text-gray-300">(028) 3823 4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-green-500 mr-2"></i>
+                            <span class="text-gray-300">support@healthfit.vn</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Đăng ký nhận tin</h3>
+                    <p class="text-gray-300 mb-3">Nhận thông tin mới nhất về sức khỏe và ưu đãi.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email của bạn" class="px-4 py-2 rounded-l focus:outline-none w-full text-gray-800">
+                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-r hover:bg-green-700">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 HealthFit. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+/* Chart Containers */
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 100%;
+}
+
+/* Responsive Charts */
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Chart Tooltips */
+.chart-tooltip {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+/* Legend Styles */
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.chart-legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.chart-legend-color {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
