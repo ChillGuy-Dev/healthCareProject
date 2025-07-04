@@ -8,6 +8,32 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenu.classList.toggle('hidden');
         });
     }
+    const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
+        e.preventDefault(); // chặn form mặc định
+
+        const formData = new FormData(loginForm);
+
+        fetch(loginForm.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                window.location.href = data.redirect;
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Đăng nhập lỗi:', error);
+            alert('Có lỗi xảy ra khi đăng nhập');
+        });
+    });
+}
+
 
     // Login Modal
     const loginBtn = document.getElementById('loginBtn');

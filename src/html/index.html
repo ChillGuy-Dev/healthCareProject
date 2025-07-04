@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthFit - Chăm sóc sức khỏe & Thể hình</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="src/assets/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -36,15 +36,15 @@
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
                 <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
-                <a href="src/html/measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
-                <a href="src/html/equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
-                <a href="src/html/news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
-                <a href="src/html/trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
-                <a href="src/html/products.html" class="text-gray-800 hover:text-green-600 py-2">Sản phẩm</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
+                <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
+                <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
+                <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
+                <a href="products.html" class="text-gray-800 hover:text-green-600 py-2">Sản phẩm</a>
             </div>
         </div>
     </header>
-
+ 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-green-500 to-blue-500 text-white py-20">
         <div class="container mx-auto px-4 text-center">
@@ -113,7 +113,7 @@
                             <span>Biểu đồ thay đổi theo thời gian</span>
                         </li>
                     </ul>
-                    <a href="src/measurement.html" class="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition inline-block">
+                    <a href="measurement.html" class="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition inline-block">
                         Bắt đầu đo ngay
                     </a>
                 </div>
@@ -232,7 +232,7 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <form id="loginForm" action="php/auth.php" method="POST">
+                <form id="loginForm" action="../php/auth.php" method="POST">
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 mb-2">Email</label>
                     <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-green-500" required>
@@ -247,10 +247,10 @@
                 </div>
             </form>
             <div class="mt Community-created resourcesV6 mt-4 pt-4 border-t border-gray-200 text-center">
-                <p class="text-gray-600">Chưa có tài khoản? <a href="#" class="text-green-600 hover:underline">Đăng ký ngay</a></p>
+            <p class="text-gray-600">Chưa có tài khoản? <a href="register.html" class="text-green-600 hover:underline">Đăng ký ngay</a></p>
             </div>
         </div>
     </div>
 
-<script src="assets/js/app.js"></script>
+<script src="../assets/js/app.js"></script>
 </html>
