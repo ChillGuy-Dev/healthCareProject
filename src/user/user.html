@@ -1,23 +1,177 @@
-c                       <td class="py-2 px-4 border-b">22.5</td>
-                                        <td class="py-2 px-4 border-b">18.3%</td>
-                                        <td class="py-2 px-4 border-b">38.5 kg</td>
-                                    </tr>
-                                    <tr class="bg-gray-50">
-                                        <td class="py-2 px-4 border-b">01/05/2023</td>
-                                        <td class="py-2 px-4 border-b">66.1 kg</td>
-                                        <td class="py-2 px-4 border-b">22.9</td>
-                                        <td class="py-2 px-4 border-b">19.2%</td>
-                                        <td class="py-2 px-4 border-b">37.8 kg</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-2 px-4 border-b">15/04/2023</td>
-                                        <td class="py-2 px-4 border-b">67.5 kg</td>
-                                        <td class="py-2 px-4 border-b">23.4</td>
-                                        <td class="py-2 px-4 border-b">20.1%</td>
-                                        <td class="py-2 px-4 border-b">37.1 kg</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản trị | HealthFit</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header (same as index.html) -->
+    <header class="bg-white shadow-md">
+        <!-- Same header content as index.html -->
+    </header>
+
+    <!-- Admin Dashboard -->
+    <section class="py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Sidebar -->
+                <div class="md:w-1/4">
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <div class="text-center mb-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ee680e87-47c4-477a-9122-653cbd4e062b.png" alt="Ảnh đại diện quản trị viên với phong cách chuyên nghiệp" class="w-24 h-24 rounded-full mx-auto mb-3">
+                            <h2 class="text-xl font-bold">Quản trị viên</h2>
+                            <p class="text-gray-600">Admin</p>
+                        </div>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="admin.html" class="flex items-center text-green-600 font-medium">
+                                    <i class="fas fa-tachometer-alt mr-3"></i>
+                                    <span>Bảng điều khiển</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-700 hover:text-green-600">
+                                    <i class="fas fa-users mr-3"></i>
+                                    <span>Người dùng</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-700 hover:text-green-600">
+                                    <i class="fas fa-chart-line mr-3"></i>
+                                    <span>Dữ liệu đo lường</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-700 hover:text-green-600">
+                                    <i class="fas fa-newspaper mr-3"></i>
+                                    <span>Quản lý tin tức</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-700 hover:text-green-600">
+                                    <i class="fas fa-cog mr-3"></i>
+                                    <span>Cài đặt</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="md:w-3/4">
+                    <!-- Statistics Cards -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-600 mb-2">Tổng người dùng</p>
+                                    <h3 class="text-2xl font-bold">1,245</h3>
+                                </div>
+                                <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                                    <i class="fas fa-users text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-green-600 flex items-center">
+                                    <i class="fas fa-arrow-up mr-1"></i>
+                                    <span>12% so với tháng trước</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-600 mb-2">Lần đo trong tháng</p>
+                                    <h3 class="text-2xl font-bold">4,532</h3>
+                                </div>
+                                <div class="bg-green-100 p-3 rounded-full text-green-600">
+                                    <i class="fas fa-ruler-combined text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-green-600 flex items-center">
+                                    <i class="fas fa-arrow-up mr-1"></i>
+                                    <span>18% so với tháng trước</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-600 mb-2">Phản hồi mới</p>
+                                    <h3 class="text-2xl font-bold">42</h3>
+                                </div>
+                                <div class="bg-purple-100 p-3 rounded-full text-purple-600">
+                                    <i class="fas fa-comments text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-red-600 flex items-center">
+                                    <i class="fas fa-arrow-down mr-1"></i>
+                                    <span>5% so với tháng trước</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Charts -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h2 class="text-xl font-bold mb-4">Người dùng mới</h2>
+                            <canvas id="usersChart" height="250"></canvas>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h2 class="text-xl font-bold mb-4">Phân bố BMI</h2>
+                            <canvas id="bmiChart" height="250"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-bold mb-4">Hoạt động gần đây</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start pb-4 border-b">
+                                <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-user-plus text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Người dùng mới đăng ký</p>
+                                    <p class="text-gray-600 text-sm">Nguyễn Thị B - 15 phút trước</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start pb-4 border-b">
+                                <div class="bg-green-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-ruler-combined text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Đo chỉ số thành công</p>
+                                    <p class="text-gray-600 text-sm">Trần Văn C - 1 giờ trước</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start pb-4 border-b">
+                                <div class="bg-purple-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-comment text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Gửi phản hồi mới</p>
+                                    <p class="text-gray-600 text-sm">Lê Thị D - 3 giờ trước</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-exclamation-triangle text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Báo cáo lỗi hệ thống</p>
+                                    <p class="text-gray-600 text-sm">Phạm Văn E - Hôm nay, 09:45</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -30,127 +184,64 @@ c                       <td class="py-2 px-4 border-b">22.5</td>
         <!-- Same footer content as index.html -->
     </footer>
 
-    <script src="assets/js/app.js"></script>
+    <script src="js/app.js"></script>
     <script>
-    // Initialize user dashboard chart
+    // Initialize admin dashboard charts
     document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('userProgressChart').getContext('2d');
-        
-        new Chart(ctx, {
-            type: 'bar',
+        // Users Chart
+        const usersCtx = document.getElementById('usersChart').getContext('2d');
+        new Chart(usersCtx, {
+            type: 'line',
             data: {
                 labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
-                datasets: [
-                    {
-                        label: 'Cân nặng (kg)',
-                        data: [68.5, 67.8, 67.2, 66.1, 65.2],
-                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Mỡ (%)',
-                        data: [22.5, 21.8, 20.4, 19.2, 18.3],
-                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }
-                ]
+                datasets: [{
+                    label: 'Người dùng mới',
+                    data: [210, 190, 220, 250, 300],
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
             },
             options: {
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        mode: 'index',
-                        intersect: false,
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: false
+                        display: false
                     }
                 }
             }
         });
-    });
-    </script>
-</body>
-c                       <td class="py-2 px-4 border-b">22.5</td>
-                                        <td class="py-2 px-4 border-b">18.3%</td>
-                                        <td class="py-2 px-4 border-b">38.5 kg</td>
-                                    </tr>
-                                    <tr class="bg-gray-50">
-                                        <td class="py-2 px-4 border-b">01/05/2023</td>
-                                        <td class="py-2 px-4 border-b">66.1 kg</td>
-                                        <td class="py-2 px-4 border-b">22.9</td>
-                                        <td class="py-2 px-4 border-b">19.2%</td>
-                                        <td class="py-2 px-4 border-b">37.8 kg</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-2 px-4 border-b">15/04/2023</td>
-                                        <td class="py-2 px-4 border-b">67.5 kg</td>
-                                        <td class="py-2 px-4 border-b">23.4</td>
-                                        <td class="py-2 px-4 border-b">20.1%</td>
-                                        <td class="py-2 px-4 border-b">37.1 kg</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer (same as index.html) -->
-    <footer class="bg-gray-800 text-white py-12">
-        <!-- Same footer content as index.html -->
-    </footer>
-
-    <script src="assets/js/app.js"></script>
-    <script>
-    // Initialize user dashboard chart
-    document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('userProgressChart').getContext('2d');
         
-        new Chart(ctx, {
-            type: 'bar',
+        // BMI Chart
+        const bmiCtx = document.getElementById('bmiChart').getContext('2d');
+        new Chart(bmiCtx, {
+            type: 'pie',
             data: {
-                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
-                datasets: [
-                    {
-                        label: 'Cân nặng (kg)',
-                        data: [68.5, 67.8, 67.2, 66.1, 65.2],
-                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Mỡ (%)',
-                        data: [22.5, 21.8, 20.4, 19.2, 18.3],
-                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }
-                ]
+                labels: ['Thiếu cân', 'Bình thường', 'Thừa cân', 'Béo phì'],
+                datasets: [{
+                    data: [15, 55, 20, 10],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(239, 68, 68, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 1
+                }]
             },
             options: {
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        mode: 'index',
-                        intersect: false,
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: false
+                        position: 'right',
                     }
                 }
             }
