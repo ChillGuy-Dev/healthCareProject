@@ -27,5 +27,6 @@
             "database": "healthfit",
             "username": "root"
         }
-    ]
+    ],
+    "liveServer.settings.port": 5502
 }

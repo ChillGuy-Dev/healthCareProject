@@ -10,33 +10,13 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS measurements (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    height FLOAT NOT NULL,
-    weight FLOAT NOT NULL,
-    bmi FLOAT NOT NULL,
-    fat_percentage FLOAT,
-    muscle_mass FLOAT,
-    date DATE NOT NULL,
-    notes TEXT,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS feedback (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    message TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
-);
-
 INSERT INTO users (name, email, password, role)
-SELECT 'Admin', 'admin@healthfit.vn', 
-       '$2y$10$yW5FGm7kVta3zM2tQYBWluLRk7JcF/8UCi13rKDxJDCtksqvXP.jS',
-       'admin'
+SELECT 'Admin', 'admin@healthfit.vn', 'admin123', 'admin'
 WHERE NOT EXISTS (
     SELECT 1 FROM users WHERE email = 'admin@healthfit.vn'
 );
+USE healthfit;
+
+UPDATE users
+SET password = 'admin123'
+WHERE email = 'admin@healthfit.vn';
