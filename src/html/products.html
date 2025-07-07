@@ -42,6 +42,38 @@
         </div>
     </header>
 
+        <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Đăng nhập</h2>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+                <form id="loginForm" action="/php/auth.php" method="POST">
+
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-green-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 mb-2">Mật khẩu</label>
+                    <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-green-500" required>
+                </div>
+                <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 mb-4">Đăng nhập</button>
+                <div class="text-center">
+                    <a href="#" class="text-green-600 hover:underline">Quên mật khẩu?</a>
+                </div>
+            </form>
+            <div class="mt Community-created resourcesV6 mt-4 pt-4 border-t border-gray-200 text-center">
+            <p class="text-gray-600">Chưa có tài khoản? <a href="register.html" class="text-green-600 hover:underline">Đăng ký ngay</a></p>
+            </div>
+        </div>
+    </div>
+
+<script src="../assets/js/app.js"></script>
+
     <section class="py-12">
         <div class="container mx-auto px-4">
             <h1 class="text-3xl font-bold mb-6">Thực phẩm bổ sung</h1>
@@ -65,6 +97,27 @@
                     <img src="/images/omg3.png" alt="Omega 3" class="rounded mb-4" />
                     <h2 class="text-xl font-semibold">Omega 3</h2>
                     <p class="text-gray-600 mt-2">Tốt cho tim mạch, thị lực và chức năng não bộ.</p>
+                    <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Mua ngay</button>
+                </div>
+                <!-- Product 4 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                    <img src="/images/Creatine.png" alt="Creatine Monohydrate" class="rounded mb-4" />
+                    <h2 class="text-xl font-semibold">Creatine Monohydrate</h2>
+                    <p class="text-gray-600 mt-2">Hỗ trợ tăng sức mạnh, hiệu suất luyện tập và phục hồi cơ bắp.</p>
+                    <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Mua ngay</button>
+                </div>
+                <!-- Product 5 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                    <img src="/images/D3.png" alt="Vitamin D3 K2" class="rounded mb-4" />
+                    <h2 class="text-xl font-semibold">Vitamin D3 K2</h2>
+                    <p class="text-gray-600 mt-2">Tăng hấp thu canxi, hỗ trợ xương chắc khỏe và hệ miễn dịch.</p>
+                    <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Mua ngay</button>
+                </div>
+                <!-- Product 6 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                    <img src="/images/baaa.png" alt="BCAA" class="rounded mb-4" />
+                    <h2 class="text-xl font-semibold">BCAA</h2>
+                    <p class="text-gray-600 mt-2">Giảm mệt mỏi khi tập luyện, phục hồi cơ nhanh và tăng tổng hợp protein.</p>
                     <button class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Mua ngay</button>
                 </div>
             </div>
@@ -95,7 +148,7 @@
                     <ul class="space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
-                            <span class="text-gray-300">123 Lê Lợi, Q1, TP.HCM</span>
+                            <span class="text-gray-300">Số 2, đường Võ Oanh, P. Thạnh Mỹ Tây, TP. HCM</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone text-green-500 mr-2"></i>
