@@ -7,6 +7,34 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .booking-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .booking-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      width: 90%;
+      max-width: 500px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+  </style>
 </head>
 <body class="bg-gray-50">
  <header class="bg-white shadow-md">
@@ -33,7 +61,8 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a> py-2">Đo chỉ số</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
@@ -47,28 +76,84 @@
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Trainer 1 -->
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
-          <img src="/images/thehinh.png" style="height: 50%;"   class="mx-auto mb-4 rounded-full" alt="HLV A">
+          <img src="/images/thehinh.png" style="height: 50%;" class="mx-auto mb-4 rounded-full" alt="HLV A">
           <h3 class="text-xl font-bold mb-2">Nguyễn Văn A</h3>
           <p class="text-gray-600 mb-2">Chuyên gia thể hình</p>
-          <p class="text-gray-500 text-sm">10 năm kinh nghiệm, chứng chỉ quốc tế NASM.</p>
+          <p class="text-gray-500 text-sm mb-4">10 năm kinh nghiệm, chứng chỉ quốc tế NASM.</p>
+          <button onclick="openBookingModal('Nguyễn Văn A', 'Chuyên gia thể hình')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
         </div>
         <!-- Trainer 2 -->
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
           <img src="/images/dinhduong.png" style="height: 50%;" class="mx-auto mb-4 rounded-full" alt="HLV B">
           <h3 class="text-xl font-bold mb-2">Lê Quốc B</h3>
           <p class="text-gray-600 mb-2">Chuyên gia dinh dưỡng</p>
-          <p class="text-gray-500 text-sm">Tốt nghiệp ĐH Y Dược TP.HCM, chuyên tư vấn giảm cân khoa học.</p>
+          <p class="text-gray-500 text-sm mb-4">Tốt nghiệp ĐH Y Dược TP.HCM, chuyên tư vấn giảm cân khoa học.</p>
+          <button onclick="openBookingModal('Lê Quốc B', 'Chuyên gia dinh dưỡng')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
         </div>
         <!-- Trainer 3 -->
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
           <img src="/images/PT.png" style="height: 50%;" class="mx-auto mb-4 rounded-full" alt="HLV C">
           <h3 class="text-xl font-bold mb-2">Trần Thị C</h3>
           <p class="text-gray-600 mb-2">PT cá nhân</p>
-          <p class="text-gray-500 text-sm">Đào tạo hàng trăm học viên từ cơ bản đến nâng cao.</p>
+          <p class="text-gray-500 text-sm mb-4">Đào tạo hàng trăm học viên từ cơ bản đến nâng cao.</p>
+          <button onclick="openBookingModal('Trần Thị C', 'PT cá nhân')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Booking Modal -->
+  <div id="bookingModal" class="booking-modal">
+    <div class="booking-content relative">
+      <span class="close-btn" onclick="closeBookingModal()">&times;</span>
+      <h2 class="text-2xl font-bold mb-4" id="modalTrainerName"></h2>
+      <p class="text-gray-600 mb-2" id="modalTrainerSpecialty"></p>
+      
+      <form class="mt-6 space-y-4">
+        <div>
+          <label for="bookingName" class="block text-gray-700 mb-1">Họ và tên</label>
+          <input type="text" id="bookingName" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        
+        <div>
+          <label for="bookingPhone" class="block text-gray-700 mb-1">Số điện thoại</label>
+          <input type="tel" id="bookingPhone" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        
+        <div>
+          <label for="bookingEmail" class="block text-gray-700 mb-1">Email</label>
+          <input type="email" id="bookingEmail" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        
+        <div>
+          <label for="bookingDate" class="block text-gray-700 mb-1">Ngày hẹn</label>
+          <input type="date" id="bookingDate" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        
+        <div>
+          <label for="bookingTime" class="block text-gray-700 mb-1">Thời gian</label>
+          <select id="bookingTime" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500" required>
+            <option value="">Chọn thời gian</option>
+            <option value="07:00">7:00 - 8:00</option>
+            <option value="08:00">8:00 - 9:00</option>
+            <option value="09:00">9:00 - 10:00</option>
+            <option value="10:00">10:00 - 11:00</option>
+            <option value="14:00">14:00 - 15:00</option>
+            <option value="15:00">15:00 - 16:00</option>
+            <option value="16:00">16:00 - 17:00</option>
+            <option value="17:00">17:00 - 18:00</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="bookingNote" class="block text-gray-700 mb-1">Ghi chú</label>
+          <textarea id="bookingNote" rows="3" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+        </div>
+        
+        <button type="button" onclick="submitBooking()" class="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Xác nhận đặt lịch</button>
+      </form>
+    </div>
+  </div>
 
   <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
@@ -125,10 +210,70 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2025 HealthFit. Tất cả các quyền được bảo lưu.</p>
+                <p>© 2025 HealthFit. <a href="https://github.com/ChillGuy-Dev/healthCareProject">Tất cả các quyền được bảo lưu.</a></p>
             </div>
         </div>
     </footer>
 
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Booking modal functions
+    function openBookingModal(name, specialty) {
+      document.getElementById('modalTrainerName').textContent = name;
+      document.getElementById('modalTrainerSpecialty').textContent = specialty;
+      document.getElementById('bookingModal').style.display = 'flex';
+    }
+
+    function closeBookingModal() {
+      document.getElementById('bookingModal').style.display = 'none';
+    }
+
+    function submitBooking() {
+      const name = document.getElementById('bookingName').value;
+      const phone = document.getElementById('bookingPhone').value;
+      const email = document.getElementById('bookingEmail').value;
+      const date = document.getElementById('bookingDate').value;
+      const time = document.getElementById('bookingTime').value;
+      const note = document.getElementById('bookingNote').value;
+      const trainerName = document.getElementById('modalTrainerName').textContent;
+      
+      if (!name || !phone || !email || !date || !time) {
+        alert('Vui lòng điền đầy đủ thông tin bắt buộc');
+        return;
+      }
+      
+      // Here you would typically send the data to your server
+      // For demo purposes, we'll just show an alert
+      alert(`Đã đặt lịch thành công với HLV ${trainerName}!\n\n` +
+            `Ngày: ${date}\n` +
+            `Thời gian: ${time}\n` +
+            `Chúng tôi sẽ liên hệ với bạn qua số điện thoại ${phone} để xác nhận.`);
+      
+      // Reset form and close modal
+      document.getElementById('bookingName').value = '';
+      document.getElementById('bookingPhone').value = '';
+      document.getElementById('bookingEmail').value = '';
+      document.getElementById('bookingDate').value = '';
+      document.getElementById('bookingTime').value = '';
+      document.getElementById('bookingNote').value = '';
+      
+      closeBookingModal();
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('bookingModal');
+      if (event.target === modal) {
+        closeBookingModal();
+      }
+    }
+  </script>
 </body>
 </html>
