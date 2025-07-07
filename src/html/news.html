@@ -5,21 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tin tức sức khỏe | HealthFit</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="/src/assets/css/styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="/images/tab.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="font-sans bg-gray-50">
-     <header class="bg-white shadow-md">
+    <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8aa5b720-b9db-4c59-b0b7-3794cd60d83c.png" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
+                <img src="/images/logo.jpg" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
                 <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
+               <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
                 <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
-                <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
+                <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium active">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
             </nav>
@@ -36,7 +38,7 @@
                 <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
                 <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
-                <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
+                <a href="news.html" class="text-gray-800 hover:text-green-600 py-2 active">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 py-2">Sản phẩm</a>
             </div>
@@ -50,25 +52,128 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Bài viết 1 -->
                 <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
-                    <img src="img/yoga.png" alt="Yoga buổi sáng" class="rounded mb-4" />
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3fc6f707-a790-4e63-876b-c572fa901a67.png" alt="Yoga buổi sáng" class="rounded mb-4" />
                     <h2 class="text-xl font-semibold">Lợi ích của yoga buổi sáng</h2>
-                    <p class="text-gray-600 mt-2">Tập yoga 15 phút mỗi sáng giúp giảm stress, tăng cường tuần hoàn máu.</p>
+                    <p class="news-text mt-2">
+                        Tập yoga vào buổi sáng giúp cơ thể khởi động nhẹ nhàng, tăng cường lưu thông máu và giảm căng thẳng hiệu quả. 
+                        Không chỉ mang lại sự dẻo dai, yoga còn hỗ trợ cải thiện hô hấp và cân bằng nội tiết tố. 
+                        Việc hít thở sâu kết hợp với các động tác kéo giãn giúp cơ thể linh hoạt hơn. 
+                        Ngoài ra, yoga còn giúp tăng khả năng tập trung và nâng cao tinh thần. 
+                        Một buổi sáng bắt đầu bằng yoga sẽ khiến bạn cảm thấy tràn đầy năng lượng và lạc quan. 
+                        Đặc biệt, chỉ cần 15 phút mỗi sáng cũng đủ để duy trì vóc dáng và giảm nguy cơ đau nhức xương khớp. 
+                        Thói quen này giúp cơ thể tỉnh táo hơn suốt cả ngày. 
+                        Hãy thử duy trì đều đặn để cảm nhận sự thay đổi tích cực.
+                    </p>
                 </div>
                 <!-- Bài viết 2 -->
                 <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
-                    <img src="img/hat-dinh-duong.png" alt="Hạt dinh dưỡng" class="rounded mb-4" />
+                    <img src="/images/hat.jpg" alt="Hạt dinh dưỡng" class="rounded mb-4" />
                     <h2 class="text-xl font-semibold">Các loại hạt tốt cho sức khỏe</h2>
-                    <p class="text-gray-600 mt-2">Hạt óc chó, hạnh nhân, hạt chia là những nguồn dinh dưỡng tuyệt vời.</p>
+                    <p class="news-text mt-2">
+                        Hạt óc chó, hạnh nhân, hạt chia và nhiều loại hạt khác chứa hàm lượng chất xơ, vitamin và khoáng chất cao. 
+                        Chúng giúp giảm cholesterol xấu, hỗ trợ tim mạch khỏe mạnh. 
+                        Ngoài ra, các loại hạt còn giúp kiểm soát cân nặng nhờ tạo cảm giác no lâu. 
+                        Chất chống oxy hóa trong hạt giúp ngăn ngừa lão hóa và tăng cường miễn dịch. 
+                        Bổ sung một nắm hạt mỗi ngày là cách đơn giản để cải thiện sức khỏe tổng thể. 
+                        Hạt cũng rất linh hoạt, có thể kết hợp trong salad, sữa chua hay ngũ cốc. 
+                        Hương vị thơm bùi tự nhiên của hạt giúp bữa ăn ngon miệng hơn. 
+                        Thói quen ăn hạt mỗi ngày là một lựa chọn thông minh để chăm sóc cơ thể.
+                    </p>
                 </div>
                 <!-- Bài viết 3 -->
                 <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
-                    <img src="img/ky-thuat-ta.png" alt="Tập tạ đúng cách" class="rounded mb-4" />
+                    <img src="/images/ta.jpg" alt="Tập tạ đúng cách" class="rounded mb-4" />
                     <h2 class="text-xl font-semibold">Kỹ thuật tập tạ an toàn</h2>
-                    <p class="text-gray-600 mt-2">Tư thế chuẩn và những lưu ý khi tập với tạ để tránh chấn thương.</p>
+                    <p class="news-text mt-2">
+                        Tập tạ mang lại nhiều lợi ích như tăng cường cơ bắp, cải thiện trao đổi chất và hỗ trợ giảm cân. 
+                        Tuy nhiên, tư thế và kỹ thuật đúng đóng vai trò cực kỳ quan trọng. 
+                        Luôn bắt đầu bằng khởi động để làm nóng cơ thể và giảm nguy cơ chấn thương. 
+                        Giữ lưng thẳng, không cong vẹo khi nâng tạ để bảo vệ cột sống. 
+                        Chọn mức tạ phù hợp thay vì cố gắng quá sức sẽ giúp duy trì hiệu quả lâu dài. 
+                        Tập trung vào hơi thở đều đặn trong suốt bài tập để tăng hiệu quả vận động. 
+                        Ngoài ra, hãy nghỉ ngơi đủ giữa các hiệp tập để cơ bắp phục hồi. 
+                        Việc tập đúng cách không chỉ giúp bạn khỏe mạnh mà còn tránh chấn thương đáng tiếc.
+                    </p>
                 </div>
+                           <!-- Bài viết 4 -->
+            <div class=" bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                <img src="/images/uong_nuoc.jpg" alt="Uống nước đủ" class="rounded mb-4" />
+                <h2 class="text-xl font-semibold">Tầm quan trọng của việc uống đủ nước</h2>
+                <p class="news-text mt-2">
+                    Uống đủ nước giúp điều hòa nhiệt độ cơ thể, hỗ trợ trao đổi chất và đào thải độc tố.
+                    Thiếu nước dễ gây mệt mỏi, giảm tập trung và khô da.
+                    Hãy duy trì thói quen uống khoảng 1.5–2 lít nước mỗi ngày.
+                    Ưu tiên nước lọc thay vì nước ngọt có gas.
+                    Ngoài ra, bổ sung trái cây mọng nước cũng giúp cơ thể đủ nước tự nhiên.
+                    Luôn mang theo bình nước bên mình để nhắc nhở bản thân uống nước thường xuyên.
+                </p>
+            </div>
+
+            <!-- Bài viết 5 -->
+            <div class=" bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                <img src="/images/giam_stress.jpg" alt="Giảm stress" class="rounded mb-4" />
+                <h2 class="text-xl font-semibold">Cách giảm stress hiệu quả</h2>
+                <p class="news-text mt-2">
+                    Tập thở sâu, thiền định hoặc nghe nhạc thư giãn giúp giảm căng thẳng nhanh chóng.
+                    Tham gia hoạt động thể thao, đi dạo ngoài trời cũng giúp tinh thần thoải mái hơn.
+                    Đừng quên sắp xếp thời gian nghỉ ngơi và ngủ đủ giấc.
+                    Trò chuyện với người thân, bạn bè để chia sẻ áp lực.
+                    Hạn chế sử dụng điện thoại trước khi ngủ để cải thiện chất lượng giấc ngủ.
+                </p>
+            </div>
+
+            <!-- Bài viết 6 -->
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                <img src="/images/an_sang.jpg" alt="Bữa sáng dinh dưỡng" class="rounded mb-4" />
+                <h2 class="text-xl font-semibold">Tầm quan trọng của bữa sáng</h2>
+                <p class="news-text mt-2">
+                    Bữa sáng cung cấp năng lượng cho cả ngày và giúp tăng cường khả năng tập trung.
+                    Nên chọn thực phẩm giàu protein, chất xơ và vitamin như yến mạch, sữa chua, trứng, rau xanh.
+                    Tránh ăn sáng bằng đồ ngọt hoặc thức ăn nhanh chứa nhiều chất béo.
+                    Một bữa sáng lành mạnh giúp duy trì cân nặng và cải thiện trao đổi chất.
+                </p>
+            </div>
+
+            <!-- Bài viết 7 -->
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                <img src="/images/ngu_du_giac.jpg" alt="Ngủ đủ giấc" class="rounded mb-4" />
+                <h2 class="text-xl font-semibold">Lợi ích của giấc ngủ đủ</h2>
+                <p class="news-text mt-2">
+                    Giấc ngủ đủ giúp cơ thể hồi phục năng lượng, tăng cường miễn dịch và cải thiện trí nhớ.
+                    Người lớn nên ngủ từ 7–8 giờ mỗi đêm.
+                    Hạn chế sử dụng thiết bị điện tử trước giờ ngủ.
+                    Tạo không gian ngủ yên tĩnh, thoáng mát để dễ đi vào giấc ngủ hơn.
+                </p>
+            </div>
+
+            <!-- Bài viết 8 -->
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                <img src="/images/the_duc.jpg" alt="Tập thể dục" class="rounded mb-4" />
+                <h2 class="text-xl font-semibold">Vì sao nên tập thể dục đều đặn</h2>
+                <p class="news-text mt-2">
+                    Tập thể dục giúp cải thiện tim mạch, giảm căng thẳng và tăng cường hệ miễn dịch.
+                    Duy trì 30 phút vận động mỗi ngày mang lại nhiều lợi ích sức khỏe lâu dài.
+                    Có thể lựa chọn đi bộ, đạp xe hoặc yoga tùy sở thích.
+                    Thói quen tập luyện đều đặn cũng giúp ngủ ngon hơn vào ban đêm.
+                </p>
+            </div>
+
+            <!-- Bài viết 9 -->
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                <img src="/images/thuc_pham_sach.jpg" alt="Thực phẩm sạch" class="rounded mb-4" />
+                <h2 class="text-xl font-semibold">Thực phẩm sạch và sức khỏe</h2>
+                <p class="news-text mt-2">
+                    Sử dụng thực phẩm sạch giúp hạn chế hóa chất, thuốc trừ sâu gây hại.
+                    Chọn rau củ quả hữu cơ, thịt cá rõ nguồn gốc để đảm bảo an toàn.
+                    Rửa sạch thực phẩm trước khi chế biến và bảo quản đúng cách.
+                    Thực phẩm tươi giúp cung cấp nhiều vitamin và khoáng chất hơn.
+                </p>
             </div>
         </div>
+    </div>
+ 
     </section>
+
 
    <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
@@ -94,7 +199,7 @@
                     <ul class="space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
-                            <span class="text-gray-300">123 Lê Lợi, Q1, TP.HCM</span>
+                            <span class="text-gray-300">Số 2 Võ Oanh P.25 Quận Bình Thạnh TP.HCM</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone text-green-500 mr-2"></i>
@@ -125,9 +230,39 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2025 HealthFit. <a href="https://github.com/ChillGuy-Dev/healthCareProject">Tất cả các quyền được bảo lưu.</a></p>
+                <p>© 2025 HealthFit. <a href="https://nguyenthang2005.github.io/Nhom7_CV/">Tất cả các quyền được bảo lưu.</a></p>
             </div>
         </div>
     </footer>
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Đăng nhập</h2>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+                <form id="loginForm" action="/php/auth.php" method="POST">
+
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-green-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 mb-2">Mật khẩu</label>
+                    <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-green-500" required>
+                </div>
+                <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 mb-4">Đăng nhập</button>
+                <div class="text-center">
+                    <a href="#" class="text-green-600 hover:underline">Quên mật khẩu?</a>
+                </div>
+            </form>
+            <div class="mt Community-created resourcesV6 mt-4 pt-4 border-t border-gray-200 text-center">
+            <p class="text-gray-600">Chưa có tài khoản? <a href="register.html" class="text-green-600 hover:underline">Đăng ký ngay</a></p>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

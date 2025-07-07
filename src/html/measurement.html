@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đo chỉ số sức khỏe | HealthFit</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/charts.css">
+    <link rel="stylesheet" href="/src/assets/css/styles.css">
+    <link rel="stylesheet" href="/src/assets/css/charts.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="/images/tab.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body class="font-sans bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-md">
+   <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8aa5b720-b9db-4c59-b0b7-3794cd60d83c.png" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
+                <img src="/images/logo.jpg" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
                 <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
-                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
+               <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium active">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
@@ -36,7 +37,7 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a> 
                 <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
@@ -45,16 +46,15 @@
             </div>
         </div>
     </header>
-
     <!-- Measurement Section -->
-    <section class="py-12">
+    <section class="py-12 measurement-section">
         <div class="container mx-auto px-4">
-            <h1 class="text-3xl font-bold mb-8">Theo dõi chỉ số sức khỏe</h1>
+            <h1 class="text-3xl font-bold mb-8 ">Theo dõi chỉ số sức khỏe</h1>
             
             <div class="grid md:grid-cols-2 gap-8 mb-12">
                 <!-- Measurement Form -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h2 class="text-xl font-bold mb-4">Nhập chỉ số của bạn</h2>
+                <div class="p-6 rounded-lg shadow-md input-box">
+                    <h2 class="text-xl font-bold mb-4 ">Nhập chỉ số của bạn</h2>
                     <form id="measurementForm" action="measurements.php" method="POST">
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div>
@@ -93,8 +93,8 @@
                 </div>
                 
                 <!-- Measurement Summary -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h2 class="text-xl font-bold mb-4">Tổng quan sức khỏe</h2>
+                <div class=" p-6 rounded-lg shadow-md input-box">
+                    <h2 class="text-xl font-bold mb-4 ">Tổng quan sức khỏe</h2>
                     <div class="grid grid-cols-3 gap-4 text-center mb-6">
                         <div>
                             <div class="text-3xl font-bold text-green-600">22.5</div>
@@ -130,7 +130,7 @@
             </div>
             
             <!-- Measurement History -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="p-6 rounded-lg shadow-md input-box">
                 <h2 class="text-xl font-bold mb-4">Lịch sử đo</h2>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white">
@@ -200,7 +200,7 @@
                     <ul class="space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
-                            <span class="text-gray-300">123 Lê Lợi, Q1, TP.HCM</span>
+                            <span class="text-gray-300">Số 2 Võ Oanh P.25 Quận Bình Thạnh TP.HCM</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone text-green-500 mr-2"></i>
@@ -231,7 +231,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2025 HealthFit. <a href="https://github.com/ChillGuy-Dev/healthCareProject">Tất cả các quyền được bảo lưu.</a></p>
+                <p>© 2025 HealthFit. <a href="https://nguyenthang2005.github.io/Nhom7_CV/">Tất cả các quyền được bảo lưu.</a></p>
             </div>
         </div>
     </footer>

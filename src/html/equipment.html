@@ -5,21 +5,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hướng dẫn thiết bị | HealthFit</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="/images/tab.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body class="font-sans bg-gray-50">
-    <!-- Header -->
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8aa5b720-b9db-4c59-b0b7-3794cd60d83c.png" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
+                <img src="/images/logo.jpg" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
                 <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
                 <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
-                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
-                <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium ">Đo chỉ số</a>
+                <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium active">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
@@ -34,9 +37,9 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
-                <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
-                <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a> 
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>                
+                <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2 active">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 py-2">Sản phẩm</a>
@@ -44,30 +47,70 @@
         </div>
     </header>
 
-    <section class="py-12">
-        <div class="container mx-auto px-4">
-            <h1 class="text-3xl font-bold mb-6">Hướng dẫn sử dụng thiết bị</h1>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+    <section>
+    <div class="container">
+        <h1 class="hd">Hướng dẫn sử dụng thiết bị</h1>
+        <div class="device-guide">
+        
+        <!-- Máy chạy bộ (video phải, nội dung trái) -->
+        <div class="device-card">
+        <div class="device-content">
+            <h2 class="device-title">MÁY CHẠY BỘ</h2>
+            
+            ✅<span class="hi">Chuẩn bị:</span> Đặt máy trên mặt phẳng, kiểm tra dây điện và bảng điều khiển, mang giày thể thao chắc chắn.<br>
+            🔥 <span class="hi">Khởi động: </span> Khởi động nhẹ 1–2 phút, sau đó lên máy đi chậm 2–3 phút.<br>
+            ⚙️ <span class="hi">Tập luyện:</span> Tăng tốc dần, kết hợp đi bộ nhanh & chạy chậm; giữ tư thế lưng thẳng, mắt nhìn trước, tiếp đất bằng giữa bàn chân.<br>
+            🛑 <span class="hi">Kết thúc:</span> Giảm tốc từ từ 2–3 phút, dừng hẳn rồi mới bước xuống, giãn cơ nhẹ.<br>
+            ⚠️ <span class="hi">Lưu ý:</span> Không nhảy xuống khi máy còn chạy; tránh xa trẻ nhỏ; ngừng ngay nếu chóng mặt hay đau ngực.
+            </p>
+        </div>
+        <div class="device-video">
+            <iframe src="https://www.youtube.com/embed/_MMTMCmsIN8" frameborder="0" allowfullscreen></iframe>
+            <p>👉 <a href="https://www.youtube.com/watch?v=_MMTMCmsIN8" target="_blank">Xem video hướng dẫn trên YouTube</a></p>
+        </div>
+        </div>
 
-                    <h2 class="text-xl font-semibold">Máy chạy bộ</h2>
-                    <p class="text-gray-600 mt-2">Hướng dẫn sử dụng máy chạy bộ an toàn, cách chọn tốc độ và tư thế đúng.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
-                    <img src="img/xe-dap.png" alt="Xe đạp tập" class="rounded mb-4" />
-                    <h2 class="text-xl font-semibold">Xe đạp tập</h2>
-                    <p class="text-gray-600 mt-2">Cách điều chỉnh ghế, tay cầm và nhịp đạp phù hợp.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
-                <h2 class="text-xl font-semibold">Tạ tay</h2>
-                <p class="text-gray-600 mt-2">Bài tập phổ biến với tạ tay cho người mới bắt đầu.</p>
-                <br>
-                <video controls style="height: 50%; width: 200%;" >
-                    <source src="/video/tatay.mp4">
-                </video>
+        <!-- Xe đạp tập (video trái, nội dung phải) -->
+        <div class="device-card reverse">
+        <div class="device-content">
+            <h2 class="device-title">XE ĐẠP TẬP</h2>
+            
+            ✅ <span class="hi">Chuẩn bị:</span> Đặt xe đạp tập ở vị trí chắc chắn; kiểm tra yên, tay cầm, bàn đạp và điều chỉnh yên cao ngang hông.<br>
+            🔥 <span class="hi">Khởi động: </span> Ngồi lên yên, đạp nhẹ 1–2 phút; giữ lưng thẳng, mắt nhìn phía trước.<br>
+            ⚙️ <span class="hi">Tập luyện:</span> Điều chỉnh lực cản phù hợp; kết hợp đạp nhanh/lực cản thấp và đạp chậm/lực cản cao; đạp đều cả hai chân.<br>
+            🛑 <span class="hi">Kết thúc:</span> Giảm tốc 2–3 phút trước khi dừng; đứng dậy từ từ; lau mồ hôi sau khi tập.<br>
+            ⚠️ <span class="hi">Lưu ý:</span> Không tập quá lâu buổi đầu (10–15 phút); ngừng ngay nếu chóng mặt, đau khớp hoặc khó thở.
+            </p>
+        </div>
+        <div class="device-video">
+            <iframe width="560" height="315"src="https://www.youtube.com/embed/cZvJMbTzmHo"title="Cách đạp xe tại nhà đúng cách"frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"allowfullscreen>
+</iframe>
+            <p>👉 <a href="https://www.youtube.com/watch?v=3Hg7NR_jawg" target="_blank">Xem video hướng dẫn trên YouTube</a></p>
+        </div>
+        </div>
 
-                </div>
-            </div>
+        <!-- Tạ tay (video phải, nội dung trái) -->
+        <div class="device-card">
+        <div class="device-content">
+            <h2 class="device-title">TẠ TAY</h2>
+            
+            ✅ <span class="hi">Chuẩn bị:</span> Chọn tạ phù hợp; kiểm tra không gian xung quanh; khởi động cổ tay, vai, khuỷu tay.<br>
+            🔥 <span class="hi">Khởi động: </span> Xoay vai, xoay cổ tay 1–2 phút; tập thử với tạ nhẹ; giữ lưng thẳng, mắt nhìn phía trước.<br>
+            ⚙️ <span class="hi">Kỹ thuật:</span> Khuỷu tay hơi cong, nâng hạ tạ chậm rãi; kết hợp thở đều; không dùng quán tính, kiểm soát tạ suốt bài tập.<br>
+            🛑 <span class="hi">Kết thúc:</span> Giảm dần số lần lặp; hạ tạ từ từ; giãn cơ tay và vai.<br>
+            ⚠️ <span class="hi">Lưu ý:</span> Không tập quá nặng hoặc quá lâu buổi đầu (10–15 phút); ngừng ngay nếu tê tay, đau khớp hoặc chóng mặt.
+            </p>
+        </div>
+        <div class="device-video">
+            <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/FrxPoEiWF2s"
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+            <p>👉 <a href="https://www.youtube.com/watch?v=FrxPoEiWF2s&t=54s" target="_blank">Xem video hướng dẫn trên YouTube</a></p>
+        </div>
         </div>
     </section>
 
@@ -83,7 +126,7 @@
                 <div>
                     <h3 class="text-xl font-bold mb-4">Liên kết nhanh</h3>
                     <ul class="space-y-2">
-                         <li><a href="index.html" class="text-gray-300 hover:text-white">Trang chủ</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Trang chủ</a></li>
                         <li><a href="measurement.html" class="text-gray-300 hover:text-white">Đo chỉ số</a></li>
                         <li><a href="equipment.html" class="text-gray-300 hover:text-white">Hướng dẫn thiết bị</a></li>
                         <li><a href="trainers.html" class="text-gray-300 hover:text-white">Huấn luyện viên</a></li>
@@ -95,7 +138,7 @@
                     <ul class="space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
-                            <span class="text-gray-300">123 Lê Lợi, Q1, TP.HCM</span>
+                            <span class="text-gray-300">Số 2 Võ Oanh P.25 Quận Bình Thạnh TP.HCM</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone text-green-500 mr-2"></i>
@@ -126,11 +169,11 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2025 HealthFit. <a href="https://github.com/ChillGuy-Dev/healthCareProject">Tất cả các quyền được bảo lưu.</a></p>
+                <p>© 2025 HealthFit. <a href="https://nguyenthang2005.github.io/Nhom7_CV/">Tất cả các quyền được bảo lưu.</a></p>
             </div>
         </div>
     </footer>
-<!-- Login Modal -->
+    <!-- Login Modal -->
     <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg p-8 max-w-md w-full">
             <div class="flex justify-between items-center mb-6">
@@ -160,5 +203,5 @@
         </div>
     </div>
 
-<script src="../assets/js/app.js"></script>
+<script src="/src/assets/js/app.js"></script>
 </html>

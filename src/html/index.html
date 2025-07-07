@@ -4,38 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthFit - Chăm sóc sức khỏe & Thể hình</title>
-    <link rel="stylesheet" href="src/assets/css/styles.css">
+    <link rel="stylesheet" href="/src/assets/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="/images/tab.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
 </head>
 <body class="font-sans bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8aa5b720-b9db-4c59-b0b7-3794cd60d83c.png" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
+                <img src="/images/logo.jpg" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
                 <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium active">Trang chủ</a>
                 <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
             </nav>
-            <div class="flex items-center space-x-4">
-                <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
-                <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
+                    <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
         </div>
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2 active">Trang chủ</a>
                 <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
@@ -44,17 +49,49 @@
             </div>
         </div>
     </header>
- 
+
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-green-500 to-blue-500 text-white py-20">
+    <section class="hero-section bg-[url('/images/baner.jpg')] bg-cover bg-center text-white py-40">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Hành trình sức khỏe của bạn bắt đầu từ đây</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="text"></span>
+            </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto">Theo dõi, cải thiện và duy trì sức khỏe với công cụ toàn diện từ HealthFit</p>
-            <button class="px-8 py-3 bg-white text-green-600 font-bold rounded-full hover:bg-gray-100 transition">
+            <button id="startBtn" class="hero-btn px-8 py-3 bg-white text-green-600 font-bold rounded-full hover:bg-gray-100 transition">
                 Bắt đầu ngay
             </button>
         </div>
     </section>
+<!-- chào mừng-->
+    <section class="intro-section">
+    <div class="content">
+        <h2 class="text-3xl font-bold mb-4">CHÀO MỪNG BẠN ĐẾN VỚI HEALTHFIT</h2>
+        <p class="text-gray-700 mb-6">
+        Chúng tôi tạo ra một môi trường nơi mà mọi người đều có thể cảm thấy thoải mái tập luyện một mình
+        hoặc cùng bạn bè của mình, bất kể trình độ thể chất và hiểu biết về gym như thế nào mà không bao giờ
+        lo lắng về việc bị đánh giá.
+        </p>
+    </div>
+    <div class="image">
+        <img src="/images/phong.jpg" alt="Ảnh phòng gym" class="rounded-lg shadow-md" />
+    </div>
+    </section>
+
+   <!-- Hd Section -->
+    <section class="training-section flex flex-col md:flex-row items-center bg-white py-16 px-4 md:px-8">
+    <div class="md:w-1/2 mb-8 md:mb-0">
+        <img src="/images/hd.jpg" alt="Hướng dẫn tập luyện" class="rounded-lg shadow-md training-img" />
+    </div>
+    <div class="md:w-1/2 md:pl-12">
+        <h2 class="text-3xl font-bold mb-4 text-green-800">HƯỚNG DẪN TẬP LUYỆN MIỄN PHÍ</h2>
+        <p class="text-gray-700 mb-6">
+        HealthFit khuyến khích bạn nên tham gia các lớp học hướng dẫn cơ bản để dễ dàng hơn trong việc sử dụng
+        các thiết bị tập luyện, khu vực chức năng và tận hưởng tất cả tiện ích của HealthFit. Đội ngũ The New Gym
+        thân thiện và chuyên nghiệp luôn sẵn sàng giúp đỡ các bạn.
+        </p>
+    </div>
+    </section>
+
 
     <!-- Features Section -->
     <section class="py-16">
@@ -94,7 +131,7 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-8 md:mb-0">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/84169092-0d03-48c8-ae25-fc1dd20e211b.png" alt="Người đang đo chỉ số cơ thể với thiết bị thông minh trong phòng tập hiện đại" class="rounded-lg shadow-lg">
+                    <img src="/images/baner1.jpg" alt="Người đang đo chỉ số cơ thể với thiết bị thông minh trong phòng tập hiện đại" class="rounded-lg shadow-lg">
                 </div>
                 <div class="md:w-1/2 md:pl-12">
                     <h2 class="text-3xl font-bold mb-4">Theo dõi sức khỏe toàn diện</h2>
@@ -132,38 +169,37 @@
                     <div class="p28x-5p">
                         <h3 class="text-xl font-bold mt-3 mb-2">Lợi ích của tập yoga buổi sáng</h3>
                         <p class="text-gray-700 mb-4">Những lợi ích tuyệt vời khi bắt đầu ngày mới với bài tập yoga 15 phút...</p>
-                        <a href="#" class="text-green-600 font-medium hover:underline">Đọc thêm</a>
+                        <a href="news.html" class="text-green-600 font-medium hover:underline">Đọc thêm</a>
                     </div>
                 </div>
                 <!-- News 2 -->
                 <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9ed7d75a-db0b-48bb-95dc-4ed14a687aae.png" alt="Các loại hạt dinh dưỡng được bày trên bàn gỗ" class="w-full h-48 object-cover">
+                    <img src="/images/hat.jpg" alt="Các loại hạt dinh dưỡng được bày trên bàn gỗ" class="w-full h-48 object-cover">
                     <div class="p-5">
                         <h3 class="text-xl font-bold mt-3 mb-2">10 loại hạt dinh dưỡng tốt nhất</h3>
                         <p class="text-gray-700 mb-4">Tìm hiểu về các loại hạt giàu dinh dưỡng và cách kết hợp vào chế độ ăn...</p>
-                        <a href="#" class="text-green-600 font-medium hover:underline">Đọc thêm</a>
+                        <a href="news.html" class="text-green-600 font-medium hover:underline">Đọc thêm</a>
                     </div>
                 </div>
                 <!-- News 3 -->
                 <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/17f7bf05-2c11-423f-995b-6025266e51c2.png" alt="Người đàn ông đang tập luyện với tạ trong phòng gym hiện đại" class="w-full h-48 object-cover">
+                    <img src="/images/ta.jpg" alt="Người đàn ông đang tập luyện với tạ trong phòng gym hiện đại" class="w-full h-48 object-cover">
                     <div class="p-5">
                         <h3 class="text-xl font-bold mt-3 mb-2">Kỹ thuật tập tạ đúng cách</h3>
                         <p class="text-gray-700 mb-4">Hướng dẫn chi tiết các kỹ thuật cơ bản khi tập tạ để tránh chấn thương...</p>
-                        <a href="#" class="text-green-600 font-medium hover:underline">Đọc thêm</a>
+                        <a href="news.html" class="text-green-600 font-medium hover:underline">Đọc thêm</a>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-8">
-                <a href="src/news.html" class="px-6 py-3 border border-green-600 text-green-600 rounded hover:bg-green-50 transition inline-block">
+                <a href="news.html" class="px-6 py-3 border border-green-600 text-green-600 rounded hover:bg-green-50 transition inline-block">
                     Xem tất cả tin tức
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+   <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <!-- About -->
@@ -187,7 +223,7 @@
                     <ul class="space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
-                            <span class="text-gray-300">123 Lê Lợi, Q1, TP.HCM</span>
+                            <span class="text-gray-300">Số 2 Võ Oanh P.25 Quận Bình Thạnh TP.HCM</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone text-green-500 mr-2"></i>
@@ -218,11 +254,10 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2025 HealthFit. <a href="https://github.com/ChillGuy-Dev/healthCareProject">Tất cả các quyền được bảo lưu.</a></p>
+                <p>© 2025 HealthFit. <a href="https://nguyenthang2005.github.io/Nhom7_CV/">Tất cả các quyền được bảo lưu.</a></p>
             </div>
         </div>
     </footer>
-
     <!-- Login Modal -->
     <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg p-8 max-w-md w-full">
@@ -253,5 +288,5 @@
         </div>
     </div>
 
-<script src="../assets/js/app.js"></script>
+<script src="/src/assets/js/app.js"></script>
 </html>
