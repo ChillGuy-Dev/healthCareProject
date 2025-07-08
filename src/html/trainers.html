@@ -8,6 +8,85 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="/images/tab.png" type="image/png">
+  <style>
+    .booking-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .booking-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+    .close-btn:hover {
+      color: #000;
+    }
+    .time-slot-booked {
+      color: #999;
+      text-decoration: line-through;
+    }
+    .reasons {
+      padding: 4rem 2rem;
+      background-color: #f8fafc;
+    }
+    .title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 3rem;
+      color: #2d3748;
+    }
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .reason-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .reason-item p {
+      font-size: 1.1rem;
+      color: #4a5568;
+    }
+    .highlight {
+      color: #38a169;
+      font-weight: 600;
+    }
+    #timeSlotWarning {
+      color: #e53e3e;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+  </style>
 </head>
 <body class="bg-gray-50">
  <header class="bg-white shadow-md">
@@ -34,7 +113,8 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a> py-2">Đo chỉ số</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2 active">Huấn luyện viên</a>
@@ -104,7 +184,7 @@
           <h3 class="text-xl font-bold mb-2">Nguyễn Văn An</h3>
           <p class="text-gray-600 mb-2">Chuyên gia thể hình</p>
           <p class="text-gray-500 text-sm mb-4">10 năm kinh nghiệm, chứng chỉ quốc tế NASM.</p>
-          <button onclick="openBookingModal('Nguyễn Văn A', 'Chuyên gia thể hình')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
+          <button onclick="openBookingModal('Nguyễn Văn An', 'Chuyên gia thể hình')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
         </div>
         <!-- Trainer 2 -->
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
@@ -112,7 +192,7 @@
           <h3 class="text-xl font-bold mb-2">Lê Quốc Bình</h3>
           <p class="text-gray-600 mb-2">Chuyên gia dinh dưỡng</p>
           <p class="text-gray-500 text-sm mb-4">Tốt nghiệp ĐH Y Dược TP.HCM, chuyên tư vấn giảm cân khoa học.</p>
-          <button onclick="openBookingModal('Lê Quốc B', 'Chuyên gia dinh dưỡng')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
+          <button onclick="openBookingModal('Lê Quốc Bình', 'Chuyên gia dinh dưỡng')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
         </div>
         <!-- Trainer 3 -->
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
@@ -120,7 +200,40 @@
           <h3 class="text-xl font-bold mb-2">Trần Thị Chi</h3>
           <p class="text-gray-600 mb-2">PT cá nhân</p>
           <p class="text-gray-500 text-sm mb-4">Đào tạo hàng trăm học viên từ cơ bản đến nâng cao.</p>
-          <button onclick="openBookingModal('Trần Thị C', 'PT cá nhân')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
+          <button onclick="openBookingModal('Trần Thị Chi', 'PT cá nhân')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking History Section -->
+  <section class="py-16 bg-gray-50" id="bookingHistory">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold">Lịch sử đặt lịch</h2>
+        <button onclick="clearBookingHistory()" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition text-sm">Xóa tất cả</button>
+      </div>
+      
+      <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Huấn luyện viên</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngày</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thời gian</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200" id="historyList">
+              <!-- Danh sách lịch đặt sẽ được thêm vào đây bằng JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="bg-gray-50 px-6 py-4 text-center text-sm text-gray-500" id="emptyHistoryMessage">
+          Bạn chưa có lịch đặt nào. Hãy đặt lịch với huấn luyện viên của chúng tôi!
         </div>
       </div>
     </div>
@@ -167,6 +280,7 @@
             <option value="16:00">16:00 - 17:00</option>
             <option value="17:00">17:00 - 18:00</option>
           </select>
+          <p id="timeSlotWarning" class="hidden">Khung giờ này đã được đặt. Vui lòng chọn khung giờ khác.</p>
         </div>
         
         <div>
@@ -282,10 +396,193 @@
       document.getElementById('modalTrainerName').textContent = name;
       document.getElementById('modalTrainerSpecialty').textContent = specialty;
       document.getElementById('bookingModal').style.display = 'flex';
+      
+      // Set min date to tomorrow
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      
+      const dd = String(tomorrow.getDate()).padStart(2, '0');
+      const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+      const yyyy = tomorrow.getFullYear();
+      
+      document.getElementById('bookingDate').min = `${yyyy}-${mm}-${dd}`;
+      
+      // Reset form
+      document.getElementById('bookingName').value = '';
+      document.getElementById('bookingPhone').value = '';
+      document.getElementById('bookingEmail').value = '';
+      document.getElementById('bookingDate').value = '';
+      document.getElementById('bookingTime').value = '';
+      document.getElementById('bookingNote').value = '';
+      
+      // Disable các khung giờ đã đặt nếu có
+      disableBookedTimeSlots();
     }
 
     function closeBookingModal() {
       document.getElementById('bookingModal').style.display = 'none';
+    }
+
+    function validatePhoneNumber(phone) {
+      // Kiểm tra số điện thoại có 9-10 số và chỉ chứa số
+      const phoneRegex = /^[0-9]{9,10}$/;
+      return phoneRegex.test(phone);
+    }
+
+    function validateEmail(email) {
+      // Kiểm tra email có đúng định dạng
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function isTimeSlotBooked(date, time) {
+      const history = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+      
+      if (!date || !time) return false;
+      
+      // Chuyển đổi thời gian đặt mới thành timestamp để so sánh
+      const newDate = new Date(date);
+      const newTimeParts = time.split(':');
+      newDate.setHours(parseInt(newTimeParts[0]));
+      newDate.setMinutes(0);
+      
+      // Kiểm tra từng lịch đã đặt
+      for (const booking of history) {
+        if (!booking.date || !booking.time) continue;
+        
+        const bookedDate = new Date(booking.date);
+        const bookedTimeParts = booking.time.split(':');
+        bookedDate.setHours(parseInt(bookedTimeParts[0]));
+        bookedDate.setMinutes(0);
+        
+        // Nếu cùng ngày và cùng khung giờ
+        if (newDate.getTime() === bookedDate.getTime()) {
+          return true;
+        }
+      }
+      
+      return false;
+    }
+
+    function disableBookedTimeSlots() {
+      const history = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+      const timeSelect = document.getElementById('bookingTime');
+      const dateInput = document.getElementById('bookingDate');
+      const warningElement = document.getElementById('timeSlotWarning');
+      
+      // Reset tất cả options
+      Array.from(timeSelect.options).forEach(option => {
+        if (option.value) {
+          option.disabled = false;
+          option.classList.remove('time-slot-booked');
+        }
+      });
+      
+      // Ẩn cảnh báo
+      warningElement.classList.add('hidden');
+      
+      // Nếu chưa chọn ngày thì không làm gì
+      if (!dateInput.value) return;
+      
+      // Lọc các lịch đã đặt trong ngày được chọn
+      const selectedDate = new Date(dateInput.value).toISOString().split('T')[0];
+      const bookedTimes = history.filter(booking => {
+        if (!booking.date) return false;
+        const bookingDate = new Date(booking.date).toISOString().split('T')[0];
+        return bookingDate === selectedDate;
+      }).map(booking => booking.time.split(':')[0]);
+      
+      // Disable các khung giờ đã đặt
+      Array.from(timeSelect.options).forEach(option => {
+        if (option.value && bookedTimes.includes(option.value.split(':')[0])) {
+          option.disabled = true;
+          option.classList.add('time-slot-booked');
+          if (option.selected) {
+            option.selected = false;
+            warningElement.classList.remove('hidden');
+          }
+        }
+      });
+    }
+
+    function saveBookingToHistory(booking) {
+      let history = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+      history.push(booking);
+      localStorage.setItem('bookingHistory', JSON.stringify(history));
+      updateHistoryView();
+    }
+
+    function updateHistoryView() {
+      const history = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+      const historyList = document.getElementById('historyList');
+      const emptyMessage = document.getElementById('emptyHistoryMessage');
+      const historySection = document.getElementById('bookingHistory');
+      
+      if (history.length === 0) {
+        emptyMessage.classList.remove('hidden');
+        historyList.innerHTML = '';
+        return;
+      }
+      
+      // Ẩn thông báo trống nếu có lịch sử
+      emptyMessage.classList.add('hidden');
+      
+      // Xóa nội dung cũ
+      historyList.innerHTML = '';
+      
+      // Thêm từng booking vào bảng
+      history.forEach((booking, index) => {
+        if (!booking.date || !booking.time) return;
+        
+        const formattedDate = new Date(booking.date).toLocaleDateString('vi-VN');
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="px-6 py-4 whitespace-nowrap">${booking.trainerName || 'Không có thông tin'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${formattedDate}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${booking.time || 'Không có thông tin'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+              ${booking.status === 'confirmed' ? 'Đã xác nhận' : 'Chờ xác nhận'}
+            </span>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <button onclick="cancelBooking('${booking.id}')" class="text-red-500 hover:text-red-700">
+              Hủy lịch
+            </button>
+          </td>
+        `;
+        historyList.appendChild(row);
+      });
+      
+      // Hiển thị section lịch sử
+      historySection.classList.remove('hidden');
+    }
+
+    function cancelBooking(bookingId) {
+      if (confirm('Bạn có chắc chắn muốn hủy lịch đặt này?')) {
+        let history = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+        history = history.filter(booking => booking.id !== bookingId);
+        localStorage.setItem('bookingHistory', JSON.stringify(history));
+        updateHistoryView();
+        
+        // Cập nhật lại các khung giờ có sẵn trong modal nếu đang mở
+        if (document.getElementById('bookingModal').style.display === 'flex') {
+          disableBookedTimeSlots();
+        }
+      }
+    }
+
+    function clearBookingHistory() {
+      if (confirm('Bạn có chắc chắn muốn xóa toàn bộ lịch sử đặt lịch?')) {
+        localStorage.removeItem('bookingHistory');
+        updateHistoryView();
+        
+        // Cập nhật lại các khung giờ có sẵn trong modal nếu đang mở
+        if (document.getElementById('bookingModal').style.display === 'flex') {
+          disableBookedTimeSlots();
+        }
+      }
     }
 
     function submitBooking() {
@@ -296,26 +593,51 @@
       const time = document.getElementById('bookingTime').value;
       const note = document.getElementById('bookingNote').value;
       const trainerName = document.getElementById('modalTrainerName').textContent;
+      const trainerSpecialty = document.getElementById('modalTrainerSpecialty').textContent;
       
       if (!name || !phone || !email || !date || !time) {
         alert('Vui lòng điền đầy đủ thông tin bắt buộc');
         return;
       }
       
-      // Here you would typically send the data to your server
-      // For demo purposes, we'll just show an alert
+      if (!validatePhoneNumber(phone)) {
+        alert('Số điện thoại phải có 9-10 chữ số');
+        return;
+      }
+      
+      if (!validateEmail(email)) {
+        alert('Vui lòng nhập đúng định dạng email (ví dụ: example@domain.com)');
+        return;
+      }
+      
+      // Kiểm tra trùng lịch
+      if (isTimeSlotBooked(date, time)) {
+        alert('Bạn đã có lịch đặt vào khung giờ này. Vui lòng chọn thời gian khác.');
+        return;
+      }
+      
+      // Tạo object booking
+      const booking = {
+        id: Date.now().toString(),
+        name,
+        phone,
+        email,
+        date,
+        time,
+        note,
+        trainerName,
+        trainerSpecialty,
+        status: 'confirmed',
+        bookingDate: new Date().toISOString()
+      };
+      
+      // Lưu vào lịch sử
+      saveBookingToHistory(booking);
+      
       alert(`Đã đặt lịch thành công với HLV ${trainerName}!\n\n` +
-            `Ngày: ${date}\n` +
+            `Ngày: ${new Date(date).toLocaleDateString('vi-VN')}\n` +
             `Thời gian: ${time}\n` +
             `Chúng tôi sẽ liên hệ với bạn qua số điện thoại ${phone} để xác nhận.`);
-      
-      // Reset form and close modal
-      document.getElementById('bookingName').value = '';
-      document.getElementById('bookingPhone').value = '';
-      document.getElementById('bookingEmail').value = '';
-      document.getElementById('bookingDate').value = '';
-      document.getElementById('bookingTime').value = '';
-      document.getElementById('bookingNote').value = '';
       
       closeBookingModal();
     }
@@ -327,6 +649,47 @@
         closeBookingModal();
       }
     }
+
+    // Login modal handling
+    const loginBtn = document.getElementById('loginBtn');
+    const loginModal = document.getElementById('loginModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    
+    loginBtn.addEventListener('click', () => {
+      loginModal.classList.remove('hidden');
+    });
+    
+    closeModalBtn.addEventListener('click', () => {
+      loginModal.classList.add('hidden');
+    });
+    
+    // Close login modal when clicking outside
+    window.addEventListener('click', (event) => {
+      if (event.target === loginModal) {
+        loginModal.classList.add('hidden');
+      }
+    });
+
+    // Load lịch sử khi trang được tải
+    document.addEventListener('DOMContentLoaded', function() {
+      updateHistoryView();
+      
+      // Thêm event listener cho input ngày
+      document.getElementById('bookingDate').addEventListener('change', disableBookedTimeSlots);
+      
+      // Thêm event listener cho select thời gian
+      document.getElementById('bookingTime').addEventListener('change', function() {
+        const date = document.getElementById('bookingDate').value;
+        const time = this.value;
+        const warningElement = document.getElementById('timeSlotWarning');
+        
+        if (date && time && isTimeSlotBooked(date, time)) {
+          warningElement.classList.remove('hidden');
+        } else {
+          warningElement.classList.add('hidden');
+        }
+      });
+    });
   </script>
 </body>
 </html>
