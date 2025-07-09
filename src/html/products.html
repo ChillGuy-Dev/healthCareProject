@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sản phẩm bổ sung | HealthFit</title>
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Góp ý | HealthFit</title>
+  <link rel="stylesheet" href="/src/assets/css/styles.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="icon" href="/images/tab.png" type="image/png">
 </head>
 <body class="font-sans bg-gray-50">
     <header class="bg-white shadow-md">
@@ -16,7 +18,7 @@
                 <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
-               <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
                 <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
@@ -24,7 +26,7 @@
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
                 <a href="feedback.html" class="text-gray-800 hover:text-green-600 font-medium">Góp ý</a>
             </nav>
-               <div class="flex items-center space-x-4">
+<div class="flex items-center space-x-4">
                                             <!-- Nút Đăng nhập (ẩn khi đã login) -->
                         <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
 
@@ -37,12 +39,12 @@
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
-
         </div>
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a> py-2">Đo chỉ số</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
@@ -82,7 +84,7 @@
         </div>
     </div>
 
-<script src="/assets/js/app.js"></script>
+
 
     <section class="py-12">
         <div class="container mx-auto px-4">
@@ -199,26 +201,11 @@
             </div>
         </div>
     </footer>
-    <script src="/assets/js/app.js"></script>
-    <script>
-    const params = new URLSearchParams(window.location.search);
-    const product = params.get("product");
 
-    const priceMap = {
-        "Whey Protein": 350000,
-        "Multivitamin": 250000,
-        "Omega 3": 280000,
-        "Creatine Monohydrate": 300000,
-        "Vitamin D3 K2": 220000,
-        "BCAA": 320000
-    };
-
-    if (product) {
-        document.getElementById("product").value = "Thanh toán sản phẩm: " + product;
-        document.getElementById("amount").value = priceMap[product] || 100000;
-    }
-</script>
 <script src="/assets/js/session_check.js"></script>
+<script src="/assets/js/app.js"></script>
+
+
 
 </body>
 </html>
