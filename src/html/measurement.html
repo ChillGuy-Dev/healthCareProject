@@ -30,6 +30,7 @@
                 <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
+                <a href="feedback.html" class="text-gray-800 hover:text-green-600 font-medium">Góp ý</a>
             </nav>
 
             <div class="flex items-center space-x-4">
@@ -55,6 +56,7 @@
                 <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 py-2">Sản phẩm</a>
+                <a href="feedback.html" class="text-gray-800 hover:text-green-600 font-medium">Góp ý</a>
             </div>
         </div>
     </header>
@@ -256,38 +258,47 @@
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/session_check.js"></script>
 <script>
-    // Khởi tạo biến chart toàn cục
+    // Global variables
     let healthChart;
 
-    // Hàm lấy ngày hiện tại định dạng YYYY-MM-DD
-    function getCurrentDate() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
-    }
+    // Get today's date in local time (not UTC)
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`; // YYYY-MM-DD
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Set ngày mặc định là hôm nay
-        const today = getCurrentDate();
-        document.getElementById('date').value = today;
-        document.getElementById('date').max = today;
-        
-        // Khởi tạo biểu đồ
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('date');
+        dateInput.value = formattedDate;
+        dateInput.min = formattedDate;
+        dateInput.max = formattedDate;
+        dateInput.readOnly = true;
+
+        // Add styling for readonly date input
+        const style = document.createElement('style');
+        style.textContent = `
+            input[type="date"][readonly] {
+                background-color: #f3f4f6;
+                cursor: not-allowed;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize chart
         initHealthChart();
-        
-        // Load dữ liệu từ localStorage
+
+        // Load existing measurements
         loadMeasurements();
-        
-        // Xử lý sự kiện làm mới lịch sử
-        document.getElementById('refreshHistory').addEventListener('click', loadMeasurements);
-        
-        // Xử lý submit form
+
+        // Set up form submission
         document.getElementById('measurementForm').addEventListener('submit', handleFormSubmit);
+
+        // Refresh button
+        document.getElementById('refreshHistory').addEventListener('click', loadMeasurements);
     });
 
-    // Khởi tạo biểu đồ
     function initHealthChart() {
         const ctx = document.getElementById('healthChart').getContext('2d');
         healthChart = new Chart(ctx, {
@@ -304,7 +315,7 @@
                         fill: true
                     },
                     {
-                        label: 'Tỷ lệ mỡ (%)',
+                        label: 'Body Fat %',
                         data: [],
                         borderColor: '#3B82F6',
                         backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -312,7 +323,7 @@
                         fill: true
                     },
                     {
-                        label: 'Khối lượng cơ (kg)',
+                        label: 'Muscle Mass (kg)',
                         data: [],
                         borderColor: '#8B5CF6',
                         backgroundColor: 'rgba(139, 92, 246, 0.1)',
@@ -325,7 +336,7 @@
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'top',
+                        position: 'top'
                     }
                 },
                 scales: {
@@ -337,134 +348,106 @@
         });
     }
 
-    // Xử lý submit form
-function handleFormSubmit(e) {
+    function handleFormSubmit(e) {
         e.preventDefault();
-        
         const form = e.target;
-        const today = getCurrentDate(); // Sử dụng hàm mới
-        const selectedDate = form.date.value;
-        
-        if (selectedDate > today) {
-            alert('Ngày đo không được lớn hơn ngày hiện tại (' + formatDisplayDate(today) + ')');
-            return;
-        }
-        
+        const now = new Date();
+
         const data = {
-            id: Date.now(), // Tạo ID duy nhất
+            id: now.getTime(),
             height: parseFloat(form.height.value),
             weight: parseFloat(form.weight.value),
             fat_percentage: form.fat_percentage.value ? parseFloat(form.fat_percentage.value) : null,
             muscle_mass: form.muscle_mass.value ? parseFloat(form.muscle_mass.value) : null,
-            date: form.date.value,
+            date: formattedDate,
+            timestamp: now.toISOString(),
             notes: form.notes.value
         };
 
+        if (!data.height || !data.weight) {
+            alert('Vui lòng nhập chiều cao và cân nặng!');
+            return;
+        }
+
         try {
-            // Tính toán BMI
             const bmi = (data.weight / ((data.height / 100) ** 2)).toFixed(1);
-            
-            // Lấy dữ liệu hiện có từ localStorage
             let measurements = JSON.parse(localStorage.getItem('healthMeasurements')) || [];
-            
-            // Thêm dữ liệu mới vào mảng
             measurements.push(data);
-            
-            // Lưu vào localStorage
             localStorage.setItem('healthMeasurements', JSON.stringify(measurements));
-            
-            // Cập nhật thông tin tổng quan
+
             updateSummary(data, bmi);
-            
-            // Làm mới form (giữ nguyên ngày)
-            form.reset();
-            form.date.value = today;
-            
-            // Load lại toàn bộ dữ liệu
             loadMeasurements();
-            
-            // Hiển thị thông báo
-            alert('Lưu chỉ số thành công!');
-            
+            form.reset();
+            form.date.value = formattedDate;
+
+            const timeString = now.toLocaleTimeString();
+            alert(`Đã lưu kết quả đo lúc ${timeString}`);
         } catch (error) {
             console.error('Lỗi khi lưu chỉ số:', error);
             alert('Có lỗi xảy ra khi lưu chỉ số. Vui lòng thử lại.');
         }
     }
 
-    // Load dữ liệu từ localStorage
     function loadMeasurements() {
         const measurements = JSON.parse(localStorage.getItem('healthMeasurements')) || [];
-        
+
         if (measurements.length === 0) {
-            const tbody = document.getElementById('measurementHistory');
-            tbody.innerHTML = `
+            document.getElementById('measurementHistory').innerHTML = `
                 <tr>
-                    <td colspan="8" class="text-center text-gray-500 py-4">Chưa có dữ liệu đo lường</td>
+                    <td colspan="8" class="text-center py-4">Chưa có dữ liệu đo lường</td>
                 </tr>`;
-            
-            // Reset biểu đồ nếu không có dữ liệu
             healthChart.data.labels = [];
-            healthChart.data.datasets[0].data = [];
-            healthChart.data.datasets[1].data = [];
-            healthChart.data.datasets[2].data = [];
+            healthChart.data.datasets.forEach(dataset => dataset.data = []);
             healthChart.update();
         } else {
-            // Hiển thị tất cả bản ghi
             displayMeasurements(measurements);
-            
-            // Cập nhật biểu đồ với tất cả dữ liệu
             updateChart(measurements);
-            
-            // Hiển thị thông tin mới nhất trong phần tổng quan
-            const latest = measurements.reduce((prev, current) => 
-                (new Date(prev.date) > new Date(current.date)) ? prev : current
+
+            const latest = measurements.reduce((prev, current) =>
+                new Date(prev.timestamp) > new Date(current.timestamp) ? prev : current
             );
             const bmi = (latest.weight / ((latest.height / 100) ** 2)).toFixed(1);
             updateSummary(latest, bmi);
         }
     }
 
-    // Hiển thị tất cả bản ghi đo lường
     function displayMeasurements(measurements) {
         const tbody = document.getElementById('measurementHistory');
         tbody.innerHTML = '';
-        
-        // Sắp xếp theo ngày (mới nhất đầu tiên)
-        measurements.sort((a, b) => new Date(b.date) - new Date(a.date));
-        
-        measurements.forEach(measurement => {
-            const bmi = (measurement.weight / ((measurement.height / 100) ** 2)).toFixed(1);
-            
-            const tr = document.createElement('tr');
-            tr.className = 'bg-white hover:bg-gray-50';
-            tr.innerHTML = `
-                <td class="py-3 px-4 border-b">${formatDate(measurement.date)}</td>
-                <td class="py-3 px-4 border-b">${measurement.weight.toFixed(1)}</td>
-                <td class="py-3 px-4 border-b">${measurement.height}</td>
-                <td class="py-3 px-4 border-b">${bmi}</td>
-                <td class="py-3 px-4 border-b">${measurement.fat_percentage ? measurement.fat_percentage.toFixed(1) : '-'}</td>
-                <td class="py-3 px-4 border-b">${measurement.muscle_mass ? measurement.muscle_mass.toFixed(1) : '-'}</td>
-                <td class="py-3 px-4 border-b">${measurement.notes || '-'}</td>
-                <td class="py-3 px-4 border-b">
-                    <button class="text-red-500 hover:text-red-700 delete-btn" data-id="${measurement.id}">
+        measurements.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        measurements.forEach(m => {
+            const bmi = (m.weight / ((m.height / 100) ** 2)).toFixed(1);
+            const date = new Date(m.timestamp);
+            const dateString = formatDate(m.date);
+            const timeString = date.toLocaleTimeString();
+
+            const row = document.createElement('tr');
+            row.className = 'hover:bg-gray-50';
+            row.innerHTML = `
+                <td class="p-3 border-b">${dateString} ${timeString}</td>
+                <td class="p-3 border-b">${m.weight.toFixed(1)}</td>
+                <td class="p-3 border-b">${m.height}</td>
+                <td class="p-3 border-b">${bmi}</td>
+                <td class="p-3 border-b">${m.fat_percentage?.toFixed(1) || '-'}</td>
+                <td class="p-3 border-b">${m.muscle_mass?.toFixed(1) || '-'}</td>
+                <td class="p-3 border-b">${m.notes || '-'}</td>
+                <td class="p-3 border-b">
+                    <button class="text-red-500 hover:text-red-700 delete-btn" data-id="${m.id}">
                         <i class="fas fa-trash-alt"></i>
                     </button>
-                </td>
-            `;
-            tbody.appendChild(tr);
+                </td>`;
+            tbody.appendChild(row);
         });
-        
-        // Thêm sự kiện xóa cho các nút
+
         document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const id = parseInt(this.getAttribute('data-id'));
                 deleteMeasurement(id);
             });
         });
     }
 
-    // Xóa bản ghi đo lường
     function deleteMeasurement(id) {
         if (confirm('Bạn có chắc chắn muốn xóa bản ghi này?')) {
             let measurements = JSON.parse(localStorage.getItem('healthMeasurements')) || [];
@@ -474,42 +457,38 @@ function handleFormSubmit(e) {
         }
     }
 
-    // Cập nhật thông tin tổng quan
     function updateSummary(data, bmi) {
-        // Cập nhật giá trị số
         document.getElementById('bmiValue').textContent = bmi;
         document.getElementById('fatValue').textContent = data.fat_percentage ? data.fat_percentage.toFixed(1) + '%' : '--';
         document.getElementById('muscleValue').textContent = data.muscle_mass ? data.muscle_mass.toFixed(1) + 'kg' : '--';
-        
-        // Đánh giá BMI
+
         const bmiStatus = document.getElementById('bmiStatus');
         if (bmi < 18.5) {
             bmiStatus.textContent = 'Thiếu cân';
             bmiStatus.className = 'text-sm text-blue-500';
-        } else if (bmi >= 18.5 && bmi < 23) {
+        } else if (bmi < 23) {
             bmiStatus.textContent = 'Bình thường';
             bmiStatus.className = 'text-sm text-green-500';
-        } else if (bmi >= 23 && bmi < 25) {
+        } else if (bmi < 25) {
             bmiStatus.textContent = 'Tiền béo phì';
             bmiStatus.className = 'text-sm text-yellow-500';
-        } else if (bmi >= 25 && bmi < 30) {
+        } else if (bmi < 30) {
             bmiStatus.textContent = 'Béo phì độ I';
             bmiStatus.className = 'text-sm text-orange-500';
         } else {
             bmiStatus.textContent = 'Béo phì độ II, III';
             bmiStatus.className = 'text-sm text-red-500';
         }
-        
-        // Đánh giá tỷ lệ mỡ (nếu có)
+
         if (data.fat_percentage) {
             const fatStatus = document.getElementById('fatStatus');
             if (data.fat_percentage < 15) {
                 fatStatus.textContent = 'Rất gầy';
                 fatStatus.className = 'text-sm text-blue-500';
-            } else if (data.fat_percentage >= 15 && data.fat_percentage < 20) {
+            } else if (data.fat_percentage < 20) {
                 fatStatus.textContent = 'Tốt';
                 fatStatus.className = 'text-sm text-green-500';
-            } else if (data.fat_percentage >= 20 && data.fat_percentage < 25) {
+            } else if (data.fat_percentage < 25) {
                 fatStatus.textContent = 'Hơi cao';
                 fatStatus.className = 'text-sm text-yellow-500';
             } else {
@@ -517,12 +496,11 @@ function handleFormSubmit(e) {
                 fatStatus.className = 'text-sm text-red-500';
             }
         }
-        
-        // Đánh giá khối lượng cơ (nếu có)
+
         if (data.muscle_mass) {
             const muscleStatus = document.getElementById('muscleStatus');
             const muscleRatio = (data.muscle_mass / data.weight * 100).toFixed(1);
-            
+
             if (muscleRatio > 40) {
                 muscleStatus.textContent = 'Rất tốt';
                 muscleStatus.className = 'text-sm text-green-500';
@@ -537,21 +515,19 @@ function handleFormSubmit(e) {
                 muscleStatus.className = 'text-sm text-red-500';
             }
         }
-        
-        // Cập nhật khuyến nghị
+
         updateRecommendations(bmi, data.fat_percentage);
     }
 
-    // Cập nhật khuyến nghị
     function updateRecommendations(bmi, fatPercentage) {
         const recommendations = document.getElementById('recommendations');
         recommendations.innerHTML = '';
-        
+
         if (bmi < 18.5) {
             recommendations.innerHTML += '<li>Tăng khẩu phần ăn giàu protein và chất béo lành mạnh</li>';
             recommendations.innerHTML += '<li>Tập luyện sức mạnh 3-4 lần/tuần</li>';
             recommendations.innerHTML += '<li>Ngủ đủ 7-8 tiếng mỗi đêm</li>';
-        } else if (bmi >= 18.5 && bmi < 23) {
+        } else if (bmi < 23) {
             recommendations.innerHTML += '<li>Duy trì chế độ ăn cân bằng</li>';
             recommendations.innerHTML += '<li>Tập luyện đa dạng: cardio và strength</li>';
             recommendations.innerHTML += '<li>Uống đủ nước (2-3 lít/ngày)</li>';
@@ -560,7 +536,7 @@ function handleFormSubmit(e) {
             recommendations.innerHTML += '<li>Tập cardio 4-5 lần/tuần</li>';
             recommendations.innerHTML += '<li>Tăng cường rau xanh và chất xơ</li>';
         }
-        
+
         if (fatPercentage) {
             if (fatPercentage > 20) {
                 recommendations.innerHTML += '<li>Giảm đồ ăn nhanh và thức ăn nhiều dầu mỡ</li>';
@@ -572,18 +548,13 @@ function handleFormSubmit(e) {
         }
     }
 
-    // Cập nhật biểu đồ
     function updateChart(data) {
-        // Sắp xếp dữ liệu theo ngày (cũ -> mới)
-        const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
-        
-        // Chuẩn bị dữ liệu cho chart
-        const labels = sortedData.map(item => formatDate(item.date));
-        const bmiData = sortedData.map(item => (item.weight / ((item.height / 100) ** 2)).toFixed(1));
-        const fatData = sortedData.map(item => item.fat_percentage || null);
-        const muscleData = sortedData.map(item => item.muscle_mass || null);
-        
-        // Cập nhật chart
+        const sorted = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
+        const labels = sorted.map(m => formatDate(m.date));
+        const bmiData = sorted.map(m => (m.weight / ((m.height / 100) ** 2)).toFixed(1));
+        const fatData = sorted.map(m => m.fat_percentage || null);
+        const muscleData = sorted.map(m => m.muscle_mass || null);
+
         healthChart.data.labels = labels;
         healthChart.data.datasets[0].data = bmiData;
         healthChart.data.datasets[1].data = fatData;
@@ -591,7 +562,6 @@ function handleFormSubmit(e) {
         healthChart.update();
     }
 
-    // Định dạng ngày tháng (DD/MM/YYYY)
     function formatDate(dateString) {
         const date = new Date(dateString);
         const day = date.getDate().toString().padStart(2, '0');
@@ -599,13 +569,7 @@ function handleFormSubmit(e) {
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     }
-
-        // Thêm hàm định dạng ngày hiển thị (DD/MM/YYYY)
-    function formatDisplayDate(dateString) {
-        const [year, month, day] = dateString.split('-');
-        return `${day}/${month}/${year}`;
-    }
-
 </script>
+
 </body>
 </html>
