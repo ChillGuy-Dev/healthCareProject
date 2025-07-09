@@ -42,3 +42,12 @@ SELECT 'Admin', 'admin@healthfit.vn', 'admin123', 'admin'
 WHERE NOT EXISTS (
   SELECT 1 FROM users WHERE email = 'admin@healthfit.vn'
 );
+
+-- Tạo bảng đánh giá cho các huấn luyện viên
+CREATE TABLE comments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  trainer_id VARCHAR(50),
+  name VARCHAR(100),
+  message TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
