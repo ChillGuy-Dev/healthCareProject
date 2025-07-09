@@ -17,32 +17,31 @@
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <img src="/images/logo.jpg" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
+                <img src="/images/logo.jpg" alt="HealthFit Logo" class="h-12">
                 <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium active">Trang chủ</a>
-                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium active">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
             </nav>
 
-                   <div class="flex items-center space-x-4">
-                                            <!-- Nút Đăng nhập (ẩn khi đã login) -->
-                        <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
+            <div class="flex items-center space-x-4">
+                <!-- Login Button -->
+                <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
 
-                        <!-- Icon người dùng (ẩn mặc định) -->
-                        <a id="userIcon" href="/user/user.html" class="hidden">
-                        <img src="https://megaweb.vn/blog/uploads/images/meme-meo-cute-1.jpg" alt="Avatar" class="w-10 h-10 rounded-full cursor-pointer border-2 border-green-600">
-                        </a>
+                <!-- User Icon (hidden by default) -->
+                <a id="userIcon" href="/user/user.html" class="hidden">
+                    <img src="https://megaweb.vn/blog/uploads/images/meme-meo-cute-1.jpg" alt="Avatar" class="w-10 h-10 rounded-full cursor-pointer border-2 border-green-600">
+                </a>
 
-                    <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-
+                <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
@@ -56,16 +55,17 @@
             </div>
         </div>
     </header>
+
     <!-- Measurement Section -->
     <section class="py-12 measurement-section">
         <div class="container mx-auto px-4">
-            <h1 class="text-3xl font-bold mb-8 ">Theo dõi chỉ số sức khỏe</h1>
+            <h1 class="text-3xl font-bold mb-8">Theo dõi chỉ số sức khỏe</h1>
             
             <div class="grid md:grid-cols-2 gap-8 mb-12">
                 <!-- Measurement Form -->
-                <div class="p-6 rounded-lg shadow-md input-box">
-                    <h2 class="text-xl font-bold mb-4 ">Nhập chỉ số của bạn</h2>
-                    <form id="measurementForm" action="/php/measurements.php" method="POST">
+                <div class="p-6 rounded-lg shadow-md bg-white">
+                    <h2 class="text-xl font-bold mb-4">Nhập chỉ số của bạn</h2>
+                    <form id="measurementForm">
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label for="height" class="block text-gray-700 mb-2">Chiều cao (cm)</label>
@@ -98,78 +98,71 @@
                             <textarea id="notes" name="notes" rows="3" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-green-500"></textarea>
                         </div>
                         
-                        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Lưu chỉ số</button>
+                        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">Lưu chỉ số</button>
                     </form>
                 </div>
                 
                 <!-- Measurement Summary -->
-                <div class=" p-6 rounded-lg shadow-md input-box">
-                    <h2 class="text-xl font-bold mb-4 ">Tổng quan sức khỏe</h2>
+                <div class="p-6 rounded-lg shadow-md bg-white">
+                    <h2 class="text-xl font-bold mb-4">Tổng quan sức khỏe</h2>
                     <div class="grid grid-cols-3 gap-4 text-center mb-6">
                         <div>
-                            <div class="text-3xl font-bold text-green-600">22.5</div>
+                            <div id="bmiValue" class="text-3xl font-bold text-green-600">--</div>
                             <div class="text-gray-600">BMI</div>
-                            <div class="text-sm text-gray-500">Bình thường</div>
+                            <div id="bmiStatus" class="text-sm text-gray-500">Chưa có dữ liệu</div>
                         </div>
                         <div>
-                            <div class="text-3xl font-bold text-blue-600">18.3%</div>
+                            <div id="fatValue" class="text-3xl font-bold text-blue-600">--</div>
                             <div class="text-gray-600">Mỡ cơ thể</div>
-                            <div class="text-sm text-gray-500">Tốt</div>
+                            <div id="fatStatus" class="text-sm text-gray-500">Chưa có dữ liệu</div>
                         </div>
                         <div>
-                            <div class="text-3xl font-bold text-purple-600">38.5kg</div>
+                            <div id="muscleValue" class="text-3xl font-bold text-purple-600">--</div>
                             <div class="text-gray-600">Cơ bắp</div>
-                            <div class="text-sm text-gray-500">Khỏe</div>
+                            <div id="muscleStatus" class="text-sm text-gray-500">Chưa có dữ liệu</div>
                         </div>
                     </div>
                     
-                  
+                    <!-- Health Chart -->
+                    <div class="mb-6">
+                        <canvas id="healthChart" height="150"></canvas>
+                    </div>
                     
+                    <!-- Recommendations -->
                     <div>
                         <h3 class="text-lg font-semibold mb-2">Khuyến nghị</h3>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>Giảm lượng đường trong chế độ ăn</li>
-                            <li>Tập cardio 3 lần/tuần</li>
-                            <li>Ngủ đủ 7-8 tiếng mỗi đêm</li>
+                        <ul id="recommendations" class="list-disc pl-5 space-y-1 text-gray-700">
+                            <li>Vui lòng nhập chỉ số để nhận khuyến nghị</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
             <!-- Measurement History -->
-            <div class="p-6 rounded-lg shadow-md input-box">
-                <h2 class="text-xl font-bold mb-4">Lịch sử đo</h2>
+            <div class="p-6 rounded-lg shadow-md bg-white">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Lịch sử đo</h2>
+                    <button id="refreshHistory" class="text-green-600 hover:text-green-800">
+                        <i class="fas fa-sync-alt mr-1"></i> Làm mới
+                    </button>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white">
                         <thead>
-                            <tr>
-                                <th class="py-2 px-4 border-b">Ngày</th>
-                                <th class="py-2 px-4 border-b">Cân nặng (kg)</th>
-                                <th class="py-2 px-4 border-b">Chiều cao (cm)</th>
-                                <th class="py-2 px-4 border-b">BMI</th>
-                                <th class="py-2 px-4 border-b">Mỡ (%)</th>
-                                <th class="py-2 px-4 border-b">Cơ (kg)</th>
+                            <tr class="bg-gray-100">
+                                <th class="py-3 px-4 border-b text-left">Ngày</th>
+                                <th class="py-3 px-4 border-b text-left">Cân nặng (kg)</th>
+                                <th class="py-3 px-4 border-b text-left">Chiều cao (cm)</th>
+                                <th class="py-3 px-4 border-b text-left">BMI</th>
+                                <th class="py-3 px-4 border-b text-left">Mỡ (%)</th>
+                                <th class="py-3 px-4 border-b text-left">Cơ (kg)</th>
+                                <th class="py-3 px-4 border-b text-left">Ghi chú</th>
+                                <th class="py-3 px-4 border-b text-left">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody id="measurementHistory">
-    <tr>
-        <td colspan="6" class="text-center text-gray-500 py-4">Đang tải dữ liệu...</td>
-    </tr>
-                            <tr class="bg-gray-50">
-                                <td class="py-2 px-4 border-b text-center">01/05/2023</td>
-                                <td class="py-2 px-4 border-b text-center">66.1</td>
-                                <td class="py-2 px-4 border-b text-center">170</td>
-                                <td class="py-2 px-4 border-b text-center">22.9</td>
-                                <td class="py-2 px-4 border-b text-center">19.2</td>
-                                <td class="py-2 px-4 border-b text-center">37.8</td>
-                            </tr>
                             <tr>
-                                <td class="py-2 px-4 border-b text-center">15/04/2023</td>
-                                <td class="py-2 px-4 border-b text-center">67.5</td>
-                                <td class="py-2 px-4 border-b text-center">170</td>
-                                <td class="py-2 px-4 border-b text-center">23.4</td>
-                                <td class="py-2 px-4 border-b text-center">20.1</td>
-                                <td class="py-2 px-4 border-b text-center">37.1</td>
+                                <td colspan="8" class="text-center text-gray-500 py-4">Vui lòng nhập chỉ số mới để xem lịch sử</td>
                             </tr>
                         </tbody>
                     </table>
@@ -178,15 +171,14 @@
         </div>
     </section>
 
-   <footer class="bg-gray-800 text-white py-12">
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
-                <!-- About -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">HealthFit</h3>
-                    <p class="text-gray-300">Nền tảng chăm sóc sức khỏe và thể hình toàn diện, giúp bạn đạt được mục tiêu tập luyện một cách khoa học.</p>
+                    <p class="text-gray-300">Nền tảng chăm sóc sức khỏe và thể hình toàn diện.</p>
                 </div>
-                <!-- Quick Links -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">Liên kết nhanh</h3>
                     <ul class="space-y-2">
@@ -196,13 +188,12 @@
                         <li><a href="trainers.html" class="text-gray-300 hover:text-white">Huấn luyện viên</a></li>
                     </ul>
                 </div>
-                <!-- Contact -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">Liên hệ</h3>
                     <ul class="space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
-                            <span class="text-gray-300">Số 2 Võ Oanh P.25 Quận Bình Thạnh TP.HCM</span>
+                            <span class="text-gray-300">Số 2 Võ Oanh, Bình Thạnh, TP.HCM</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone text-green-500 mr-2"></i>
@@ -214,29 +205,22 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Newsletter -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">Đăng ký nhận tin</h3>
-                    <p class="text-gray-300 mb-3">Nhận thông tin mới nhất về sức khỏe và ưu đãi.</p>
                     <form class="flex">
                         <input type="email" placeholder="Email của bạn" class="px-4 py-2 rounded-l focus:outline-none w-full text-gray-800">
                         <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-r hover:bg-green-700">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
-                    <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-tiktok"></i></a>
-                    </div>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2025 HealthFit. <a href="https://nguyenthang2005.github.io/Nhom7_CV/">Tất cả các quyền được bảo lưu.</a></p>
+                <p>© 2025 HealthFit. Tất cả các quyền được bảo lưu.</p>
             </div>
         </div>
     </footer>
+
     <!-- Login Modal -->
     <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg p-8 max-w-md w-full">
@@ -246,8 +230,7 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-                    <form id="measurementForm">
-
+            <form id="loginForm">
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 mb-2">Email</label>
                     <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-green-500" required>
@@ -261,8 +244,8 @@
                     <a href="#" class="text-green-600 hover:underline">Quên mật khẩu?</a>
                 </div>
             </form>
-            <div class="mt Community-created resourcesV6 mt-4 pt-4 border-t border-gray-200 text-center">
-            <p class="text-gray-600">Chưa có tài khoản? <a href="register.html" class="text-green-600 hover:underline">Đăng ký ngay</a></p>
+            <div class="mt-4 pt-4 border-t border-gray-200 text-center">
+                <p class="text-gray-600">Chưa có tài khoản? <a href="register.html" class="text-green-600 hover:underline">Đăng ký ngay</a></p>
             </div>
         </div>
     </div>
@@ -270,137 +253,356 @@
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/session_check.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const response = await fetch('/php/get_measurements.php');
-        const result = await response.json();
+    // Khởi tạo biến chart toàn cục
+    let healthChart;
 
-        if (result.status === 'success') {
-            const tbody = document.getElementById('measurementHistory');
-            tbody.innerHTML = '';
-
-            result.data.forEach(row => {
-                const bmi = (row.height && row.height > 0)
-                    ? (row.weight / ((row.height / 100) ** 2)).toFixed(1)
-                    : '-';
-
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="py-2 px-4 border-b text-center">${row.date}</td>
-                        <td class="py-2 px-4 border-b text-center">${row.weight}</td>
-                        <td class="py-2 px-4 border-b text-center">${row.height}</td>
-                        <td class="py-2 px-4 border-b text-center">${bmi}</td>
-                        <td class="py-2 px-4 border-b text-center">${row.fat_percentage ?? '-'}</td>
-                        <td class="py-2 px-4 border-b text-center">${row.muscle_mass ?? '-'}</td>
-                    </tr>`;
-            });
-        } else {
-            document.getElementById('measurementHistory').innerHTML = `
-                <tr><td colspan="6" class="text-center py-4 text-gray-500">${result.message}</td></tr>`;
-        }
-    } catch (err) {
-        document.getElementById('measurementHistory').innerHTML = `
-            <tr><td colspan="6" class="text-center py-4 text-red-500">Lỗi tải dữ liệu</td></tr>`;
-        console.error('Lỗi khi tải lịch sử đo:', err);
+    // Hàm lấy ngày hiện tại định dạng YYYY-MM-DD
+    function getCurrentDate() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
     }
-});
-</script>
-<script>
-document.getElementById('measurementForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
 
-    const form = e.target;
-    const data = {
-        height: parseFloat(form.height.value),
-        weight: parseFloat(form.weight.value),
-        fat_percentage: parseFloat(form.fat_percentage.value) || null,
-        muscle_mass: parseFloat(form.muscle_mass.value) || null,
-        date: form.date.value,
-        notes: form.notes.value
-    };
-
-    const bmi = (data.weight / ((data.height / 100) ** 2)).toFixed(1);
-
-    const response = await fetch('/php/measurements.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set ngày mặc định là hôm nay
+        const today = getCurrentDate();
+        document.getElementById('date').value = today;
+        document.getElementById('date').max = today;
+        
+        // Khởi tạo biểu đồ
+        initHealthChart();
+        
+        // Load dữ liệu từ localStorage
+        loadMeasurements();
+        
+        // Xử lý sự kiện làm mới lịch sử
+        document.getElementById('refreshHistory').addEventListener('click', loadMeasurements);
+        
+        // Xử lý submit form
+        document.getElementById('measurementForm').addEventListener('submit', handleFormSubmit);
     });
 
-    const result = await response.json();
-
-    if (result.status === 'success') {
-        // Cập nhật tổng quan sức khỏe
-        document.querySelector('.text-green-600').textContent = bmi;
-        document.querySelector('.text-blue-600').textContent = data.fat_percentage ? `${data.fat_percentage}%` : '-';
-        document.querySelector('.text-purple-600').textContent = data.muscle_mass ? `${data.muscle_mass}kg` : '-';
-
-        // Cập nhật lời khuyên theo BMI
-        const recommendList = document.querySelector('.list-disc');
-        recommendList.innerHTML = '';
-
-        if (bmi < 18.5) {
-            recommendList.innerHTML += '<li>Tăng khẩu phần ăn nhiều đạm và chất béo lành mạnh</li>';
-            recommendList.innerHTML += '<li>Tập luyện nhẹ nhàng để tăng cơ</li>';
-        } else if (bmi >= 18.5 && bmi < 24.9) {
-            recommendList.innerHTML += '<li>Duy trì chế độ ăn và luyện tập hiện tại</li>';
-            recommendList.innerHTML += '<li>Ngủ đủ 7-8 tiếng mỗi đêm</li>';
-        } else if (bmi >= 25 && bmi < 29.9) {
-            recommendList.innerHTML += '<li>Giảm tinh bột và đường trong chế độ ăn</li>';
-            recommendList.innerHTML += '<li>Tập cardio ít nhất 4 lần/tuần</li>';
-        } else {
-            recommendList.innerHTML += '<li>Tham khảo chuyên gia dinh dưỡng</li>';
-            recommendList.innerHTML += '<li>Tăng cường vận động hàng ngày</li>';
-        }
-
-        // Làm mới form
-        form.reset();
-
-        // Gọi lại lịch sử đo
-        loadMeasurementHistory();
-    } else {
-        alert(result.message || 'Lỗi khi lưu chỉ số');
+    // Khởi tạo biểu đồ
+    function initHealthChart() {
+        const ctx = document.getElementById('healthChart').getContext('2d');
+        healthChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'BMI',
+                        data: [],
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Tỷ lệ mỡ (%)',
+                        data: [],
+                        borderColor: '#3B82F6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Khối lượng cơ (kg)',
+                        data: [],
+                        borderColor: '#8B5CF6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     }
-});
 
-// Tải lại lịch sử đo
-async function loadMeasurementHistory() {
-    try {
-        const response = await fetch('/php/get_measurements.php');
-        const result = await response.json();
+    // Xử lý submit form
+function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        const form = e.target;
+        const today = getCurrentDate(); // Sử dụng hàm mới
+        const selectedDate = form.date.value;
+        
+        if (selectedDate > today) {
+            alert('Ngày đo không được lớn hơn ngày hiện tại (' + formatDisplayDate(today) + ')');
+            return;
+        }
+        
+        const data = {
+            id: Date.now(), // Tạo ID duy nhất
+            height: parseFloat(form.height.value),
+            weight: parseFloat(form.weight.value),
+            fat_percentage: form.fat_percentage.value ? parseFloat(form.fat_percentage.value) : null,
+            muscle_mass: form.muscle_mass.value ? parseFloat(form.muscle_mass.value) : null,
+            date: form.date.value,
+            notes: form.notes.value
+        };
 
+        try {
+            // Tính toán BMI
+            const bmi = (data.weight / ((data.height / 100) ** 2)).toFixed(1);
+            
+            // Lấy dữ liệu hiện có từ localStorage
+            let measurements = JSON.parse(localStorage.getItem('healthMeasurements')) || [];
+            
+            // Thêm dữ liệu mới vào mảng
+            measurements.push(data);
+            
+            // Lưu vào localStorage
+            localStorage.setItem('healthMeasurements', JSON.stringify(measurements));
+            
+            // Cập nhật thông tin tổng quan
+            updateSummary(data, bmi);
+            
+            // Làm mới form (giữ nguyên ngày)
+            form.reset();
+            form.date.value = today;
+            
+            // Load lại toàn bộ dữ liệu
+            loadMeasurements();
+            
+            // Hiển thị thông báo
+            alert('Lưu chỉ số thành công!');
+            
+        } catch (error) {
+            console.error('Lỗi khi lưu chỉ số:', error);
+            alert('Có lỗi xảy ra khi lưu chỉ số. Vui lòng thử lại.');
+        }
+    }
+
+    // Load dữ liệu từ localStorage
+    function loadMeasurements() {
+        const measurements = JSON.parse(localStorage.getItem('healthMeasurements')) || [];
+        
+        if (measurements.length === 0) {
+            const tbody = document.getElementById('measurementHistory');
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="8" class="text-center text-gray-500 py-4">Chưa có dữ liệu đo lường</td>
+                </tr>`;
+            
+            // Reset biểu đồ nếu không có dữ liệu
+            healthChart.data.labels = [];
+            healthChart.data.datasets[0].data = [];
+            healthChart.data.datasets[1].data = [];
+            healthChart.data.datasets[2].data = [];
+            healthChart.update();
+        } else {
+            // Hiển thị tất cả bản ghi
+            displayMeasurements(measurements);
+            
+            // Cập nhật biểu đồ với tất cả dữ liệu
+            updateChart(measurements);
+            
+            // Hiển thị thông tin mới nhất trong phần tổng quan
+            const latest = measurements.reduce((prev, current) => 
+                (new Date(prev.date) > new Date(current.date)) ? prev : current
+            );
+            const bmi = (latest.weight / ((latest.height / 100) ** 2)).toFixed(1);
+            updateSummary(latest, bmi);
+        }
+    }
+
+    // Hiển thị tất cả bản ghi đo lường
+    function displayMeasurements(measurements) {
         const tbody = document.getElementById('measurementHistory');
         tbody.innerHTML = '';
-
-        if (result.status === 'success') {
-            result.data.forEach(row => {
-                const bmi = (row.height && row.height > 0)
-                    ? (row.weight / ((row.height / 100) ** 2)).toFixed(1)
-                    : '-';
-
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="py-2 px-4 border-b text-center">${row.date}</td>
-                        <td class="py-2 px-4 border-b text-center">${row.weight}</td>
-                        <td class="py-2 px-4 border-b text-center">${row.height}</td>
-                        <td class="py-2 px-4 border-b text-center">${bmi}</td>
-                        <td class="py-2 px-4 border-b text-center">${row.fat_percentage ?? '-'}</td>
-                        <td class="py-2 px-4 border-b text-center">${row.muscle_mass ?? '-'}</td>
-                    </tr>`;
+        
+        // Sắp xếp theo ngày (mới nhất đầu tiên)
+        measurements.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        measurements.forEach(measurement => {
+            const bmi = (measurement.weight / ((measurement.height / 100) ** 2)).toFixed(1);
+            
+            const tr = document.createElement('tr');
+            tr.className = 'bg-white hover:bg-gray-50';
+            tr.innerHTML = `
+                <td class="py-3 px-4 border-b">${formatDate(measurement.date)}</td>
+                <td class="py-3 px-4 border-b">${measurement.weight.toFixed(1)}</td>
+                <td class="py-3 px-4 border-b">${measurement.height}</td>
+                <td class="py-3 px-4 border-b">${bmi}</td>
+                <td class="py-3 px-4 border-b">${measurement.fat_percentage ? measurement.fat_percentage.toFixed(1) : '-'}</td>
+                <td class="py-3 px-4 border-b">${measurement.muscle_mass ? measurement.muscle_mass.toFixed(1) : '-'}</td>
+                <td class="py-3 px-4 border-b">${measurement.notes || '-'}</td>
+                <td class="py-3 px-4 border-b">
+                    <button class="text-red-500 hover:text-red-700 delete-btn" data-id="${measurement.id}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+        
+        // Thêm sự kiện xóa cho các nút
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = parseInt(this.getAttribute('data-id'));
+                deleteMeasurement(id);
             });
-        } else {
-            tbody.innerHTML = `<tr><td colspan="6" class="text-center py-4 text-gray-500">${result.message}</td></tr>`;
-        }
-    } catch (err) {
-        document.getElementById('measurementHistory').innerHTML = `
-            <tr><td colspan="6" class="text-center py-4 text-red-500">Lỗi tải dữ liệu</td></tr>`;
-        console.error('Lỗi khi tải lịch sử đo:', err);
+        });
     }
-}
 
-// Gọi khi trang load
-document.addEventListener('DOMContentLoaded', loadMeasurementHistory);
+    // Xóa bản ghi đo lường
+    function deleteMeasurement(id) {
+        if (confirm('Bạn có chắc chắn muốn xóa bản ghi này?')) {
+            let measurements = JSON.parse(localStorage.getItem('healthMeasurements')) || [];
+            measurements = measurements.filter(m => m.id !== id);
+            localStorage.setItem('healthMeasurements', JSON.stringify(measurements));
+            loadMeasurements();
+        }
+    }
+
+    // Cập nhật thông tin tổng quan
+    function updateSummary(data, bmi) {
+        // Cập nhật giá trị số
+        document.getElementById('bmiValue').textContent = bmi;
+        document.getElementById('fatValue').textContent = data.fat_percentage ? data.fat_percentage.toFixed(1) + '%' : '--';
+        document.getElementById('muscleValue').textContent = data.muscle_mass ? data.muscle_mass.toFixed(1) + 'kg' : '--';
+        
+        // Đánh giá BMI
+        const bmiStatus = document.getElementById('bmiStatus');
+        if (bmi < 18.5) {
+            bmiStatus.textContent = 'Thiếu cân';
+            bmiStatus.className = 'text-sm text-blue-500';
+        } else if (bmi >= 18.5 && bmi < 23) {
+            bmiStatus.textContent = 'Bình thường';
+            bmiStatus.className = 'text-sm text-green-500';
+        } else if (bmi >= 23 && bmi < 25) {
+            bmiStatus.textContent = 'Tiền béo phì';
+            bmiStatus.className = 'text-sm text-yellow-500';
+        } else if (bmi >= 25 && bmi < 30) {
+            bmiStatus.textContent = 'Béo phì độ I';
+            bmiStatus.className = 'text-sm text-orange-500';
+        } else {
+            bmiStatus.textContent = 'Béo phì độ II, III';
+            bmiStatus.className = 'text-sm text-red-500';
+        }
+        
+        // Đánh giá tỷ lệ mỡ (nếu có)
+        if (data.fat_percentage) {
+            const fatStatus = document.getElementById('fatStatus');
+            if (data.fat_percentage < 15) {
+                fatStatus.textContent = 'Rất gầy';
+                fatStatus.className = 'text-sm text-blue-500';
+            } else if (data.fat_percentage >= 15 && data.fat_percentage < 20) {
+                fatStatus.textContent = 'Tốt';
+                fatStatus.className = 'text-sm text-green-500';
+            } else if (data.fat_percentage >= 20 && data.fat_percentage < 25) {
+                fatStatus.textContent = 'Hơi cao';
+                fatStatus.className = 'text-sm text-yellow-500';
+            } else {
+                fatStatus.textContent = 'Cao';
+                fatStatus.className = 'text-sm text-red-500';
+            }
+        }
+        
+        // Đánh giá khối lượng cơ (nếu có)
+        if (data.muscle_mass) {
+            const muscleStatus = document.getElementById('muscleStatus');
+            const muscleRatio = (data.muscle_mass / data.weight * 100).toFixed(1);
+            
+            if (muscleRatio > 40) {
+                muscleStatus.textContent = 'Rất tốt';
+                muscleStatus.className = 'text-sm text-green-500';
+            } else if (muscleRatio > 35) {
+                muscleStatus.textContent = 'Tốt';
+                muscleStatus.className = 'text-sm text-green-500';
+            } else if (muscleRatio > 30) {
+                muscleStatus.textContent = 'Trung bình';
+                muscleStatus.className = 'text-sm text-yellow-500';
+            } else {
+                muscleStatus.textContent = 'Thấp';
+                muscleStatus.className = 'text-sm text-red-500';
+            }
+        }
+        
+        // Cập nhật khuyến nghị
+        updateRecommendations(bmi, data.fat_percentage);
+    }
+
+    // Cập nhật khuyến nghị
+    function updateRecommendations(bmi, fatPercentage) {
+        const recommendations = document.getElementById('recommendations');
+        recommendations.innerHTML = '';
+        
+        if (bmi < 18.5) {
+            recommendations.innerHTML += '<li>Tăng khẩu phần ăn giàu protein và chất béo lành mạnh</li>';
+            recommendations.innerHTML += '<li>Tập luyện sức mạnh 3-4 lần/tuần</li>';
+            recommendations.innerHTML += '<li>Ngủ đủ 7-8 tiếng mỗi đêm</li>';
+        } else if (bmi >= 18.5 && bmi < 23) {
+            recommendations.innerHTML += '<li>Duy trì chế độ ăn cân bằng</li>';
+            recommendations.innerHTML += '<li>Tập luyện đa dạng: cardio và strength</li>';
+            recommendations.innerHTML += '<li>Uống đủ nước (2-3 lít/ngày)</li>';
+        } else {
+            recommendations.innerHTML += '<li>Giảm lượng tinh bột và đường</li>';
+            recommendations.innerHTML += '<li>Tập cardio 4-5 lần/tuần</li>';
+            recommendations.innerHTML += '<li>Tăng cường rau xanh và chất xơ</li>';
+        }
+        
+        if (fatPercentage) {
+            if (fatPercentage > 20) {
+                recommendations.innerHTML += '<li>Giảm đồ ăn nhanh và thức ăn nhiều dầu mỡ</li>';
+                recommendations.innerHTML += '<li>Tập HIIT 2-3 lần/tuần</li>';
+            } else if (fatPercentage < 15) {
+                recommendations.innerHTML += '<li>Tăng lượng calo từ nguồn lành mạnh</li>';
+                recommendations.innerHTML += '<li>Hạn chế cardio quá nhiều</li>';
+            }
+        }
+    }
+
+    // Cập nhật biểu đồ
+    function updateChart(data) {
+        // Sắp xếp dữ liệu theo ngày (cũ -> mới)
+        const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        // Chuẩn bị dữ liệu cho chart
+        const labels = sortedData.map(item => formatDate(item.date));
+        const bmiData = sortedData.map(item => (item.weight / ((item.height / 100) ** 2)).toFixed(1));
+        const fatData = sortedData.map(item => item.fat_percentage || null);
+        const muscleData = sortedData.map(item => item.muscle_mass || null);
+        
+        // Cập nhật chart
+        healthChart.data.labels = labels;
+        healthChart.data.datasets[0].data = bmiData;
+        healthChart.data.datasets[1].data = fatData;
+        healthChart.data.datasets[2].data = muscleData;
+        healthChart.update();
+    }
+
+    // Định dạng ngày tháng (DD/MM/YYYY)
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+        // Thêm hàm định dạng ngày hiển thị (DD/MM/YYYY)
+    function formatDisplayDate(dateString) {
+        const [year, month, day] = dateString.split('-');
+        return `${day}/${month}/${year}`;
+    }
+
 </script>
-
-
+</body>
 </html>

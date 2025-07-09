@@ -102,6 +102,7 @@
                 <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium active">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
+                <a href="feedback.html" class="text-gray-800 hover:text-green-600 font-medium">Góp ý</a>
             </nav>
                <div class="flex items-center space-x-4">
                                             <!-- Nút Đăng nhập (ẩn khi đã login) -->
@@ -127,6 +128,7 @@
                 <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2 active">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 py-2">Sản phẩm</a>
+                <a href="feedback.html" class="text-gray-800 hover:text-green-600 font-medium">Góp ý</a>
             </div>
         </div>
 
@@ -195,19 +197,6 @@
           <p class="text-gray-600 mb-2">Chuyên gia thể hình</p>
           <p class="text-gray-500 text-sm mb-4">10 năm kinh nghiệm, chứng chỉ quốc tế NASM.</p>
           <button onclick="openBookingModal('Nguyễn Văn An', 'Chuyên gia thể hình')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
-          <!-- Góp ý cho Nguyễn Văn An -->
-          <div class="mt-4 text-left border-t pt-4">
-            <h4 class="text-lg font-semibold text-green-700 mb-2">Góp ý cho HLV Nguyễn Văn An</h4>
-            <div id="comments-an">
-            <!-- Comments will be loaded here via JavaScript -->
-            </div>
-              <form method="POST" action="../php/save_comment.php" class="space-y-2 mt-2">
-              <input type="hidden" name="trainer_id" value="an">
-              <input type="text" name="name" placeholder="Tên của bạn" required class="w-full border px-2 py-1 rounded">
-              <textarea name="message" placeholder="Nhận xét của bạn..." required class="w-full border px-2 py-1 rounded"></textarea>
-              <button type="submit" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">Gửi</button>
-              </form>
-          </div>
         </div>
 
 
@@ -218,19 +207,6 @@
           <p class="text-gray-600 mb-2">Chuyên gia dinh dưỡng</p>
           <p class="text-gray-500 text-sm mb-4">Tốt nghiệp ĐH Y Dược TP.HCM, chuyên tư vấn giảm cân khoa học.</p>
           <button onclick="openBookingModal('Lê Quốc Bình', 'Chuyên gia dinh dưỡng')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
-          <!-- Góp ý cho Lê Quốc Bình -->
-          <div class="mt-4 text-left border-t pt-4">
-            <h4 class="text-lg font-semibold text-green-700 mb-2">Góp ý cho HLV Lê Quốc Bình</h4>
-            <div id="comments-binh">
-            <!-- Comments will be loaded here via JavaScript -->
-            </div>
-              <form method="POST" action="../php/save_comment.php" class="space-y-2 mt-2">
-              <input type="hidden" name="trainer_id" value="binh">
-              <input type="text" name="name" placeholder="Tên của bạn" required class="w-full border px-2 py-1 rounded">
-              <textarea name="message" placeholder="Nhận xét của bạn..." required class="w-full border px-2 py-1 rounded"></textarea>
-              <button type="submit" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">Gửi</button>
-              </form>
-            </div>
         </div>
         <!-- Trainer 3 -->
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
@@ -239,19 +215,7 @@
           <p class="text-gray-600 mb-2">PT cá nhân</p>
           <p class="text-gray-500 text-sm mb-4">Đào tạo hàng trăm học viên từ cơ bản đến nâng cao.</p>
           <button onclick="openBookingModal('Trần Thị Chi', 'PT cá nhân')" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đặt lịch ngay</button>
-          <!-- Góp ý cho Trần Thị Chi -->
-          <div class="mt-4 text-left border-t pt-4">
-            <h4 class="text-lg font-semibold text-green-700 mb-2">Góp ý cho HLV Trần Thị Chi</h4>
-            <div id="comments-chi">
-          <!-- Comments will be loaded here via JavaScript -->
-            </div>
-              <form method="POST" action="../php/save_comment.php" class="space-y-2 mt-2">
-              <input type="hidden" name="trainer_id" value="chi">
-              <input type="text" name="name" placeholder="Tên của bạn" required class="w-full border px-2 py-1 rounded">
-              <textarea name="message" placeholder="Nhận xét của bạn..." required class="w-full border px-2 py-1 rounded"></textarea>
-              <button type="submit" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">Gửi</button>
-              </form>
-            </div>
+
           </div>
       </div>
     </div>
@@ -390,12 +354,6 @@
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
-                    <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-tiktok"></i></a>
-                    </div>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
