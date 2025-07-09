@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đo chỉ số sức khỏe | HealthFit</title>
-    <link rel="stylesheet" href="/src/assets/css/styles.css">
-    <link rel="stylesheet" href="/src/assets/css/charts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/charts.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -13,26 +13,36 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body class="font-sans bg-gray-50">
-   <header class="bg-white shadow-md">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <img src="/images/logo.jpg" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
                 <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
-               <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
-                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium active">Đo chỉ số</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium active">Trang chủ</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
                 <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
             </nav>
-            <div class="flex items-center space-x-4">
-                <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
-                <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+
+                   <div class="flex items-center space-x-4">
+                                            <!-- Nút Đăng nhập (ẩn khi đã login) -->
+                        <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
+
+                        <!-- Icon người dùng (ẩn mặc định) -->
+                        <a id="userIcon" href="/user/user.html" class="hidden">
+                        <img src="https://megaweb.vn/blog/uploads/images/meme-meo-cute-1.jpg" alt="Avatar" class="w-10 h-10 rounded-full cursor-pointer border-2 border-green-600">
+                        </a>
+
+                    <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
         </div>
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
@@ -55,7 +65,7 @@
                 <!-- Measurement Form -->
                 <div class="p-6 rounded-lg shadow-md input-box">
                     <h2 class="text-xl font-bold mb-4 ">Nhập chỉ số của bạn</h2>
-                    <form id="measurementForm" action="measurements.php" method="POST">
+                    <form id="measurementForm" action="/php/measurements.php" method="POST">
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label for="height" class="block text-gray-700 mb-2">Chiều cao (cm)</label>
@@ -113,10 +123,7 @@
                         </div>
                     </div>
                     
-                    <div class="mb-4">
-                        <h3 class="text-lg font-semibold mb-2">Tiến trình của bạn</h3>
-                        <canvas id="progressChart" height="200"></canvas>
-                    </div>
+                  
                     
                     <div>
                         <h3 class="text-lg font-semibold mb-2">Khuyến nghị</h3>
@@ -144,15 +151,10 @@
                                 <th class="py-2 px-4 border-b">Cơ (kg)</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="py-2 px-4 border-b text-center">15/05/2023</td>
-                                <td class="py-2 px-4 border-b text-center">65.2</td>
-                                <td class="py-2 px-4 border-b text-center">170</td>
-                                <td class="py-2 px-4 border-b text-center">22.5</td>
-                                <td class="py-2 px-4 border-b text-center">18.3</td>
-                                <td class="py-2 px-4 border-b text-center">38.5</td>
-                            </tr>
+                        <tbody id="measurementHistory">
+    <tr>
+        <td colspan="6" class="text-center text-gray-500 py-4">Đang tải dữ liệu...</td>
+    </tr>
                             <tr class="bg-gray-50">
                                 <td class="py-2 px-4 border-b text-center">01/05/2023</td>
                                 <td class="py-2 px-4 border-b text-center">66.1</td>
@@ -244,7 +246,7 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-                <form id="loginForm" action="/php/auth.php" method="POST">
+                    <form id="measurementForm">
 
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 mb-2">Email</label>
@@ -265,5 +267,140 @@
         </div>
     </div>
 
-<script src="../assets/js/app.js"></script>
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/session_check.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('/php/get_measurements.php');
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            const tbody = document.getElementById('measurementHistory');
+            tbody.innerHTML = '';
+
+            result.data.forEach(row => {
+                const bmi = (row.height && row.height > 0)
+                    ? (row.weight / ((row.height / 100) ** 2)).toFixed(1)
+                    : '-';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="py-2 px-4 border-b text-center">${row.date}</td>
+                        <td class="py-2 px-4 border-b text-center">${row.weight}</td>
+                        <td class="py-2 px-4 border-b text-center">${row.height}</td>
+                        <td class="py-2 px-4 border-b text-center">${bmi}</td>
+                        <td class="py-2 px-4 border-b text-center">${row.fat_percentage ?? '-'}</td>
+                        <td class="py-2 px-4 border-b text-center">${row.muscle_mass ?? '-'}</td>
+                    </tr>`;
+            });
+        } else {
+            document.getElementById('measurementHistory').innerHTML = `
+                <tr><td colspan="6" class="text-center py-4 text-gray-500">${result.message}</td></tr>`;
+        }
+    } catch (err) {
+        document.getElementById('measurementHistory').innerHTML = `
+            <tr><td colspan="6" class="text-center py-4 text-red-500">Lỗi tải dữ liệu</td></tr>`;
+        console.error('Lỗi khi tải lịch sử đo:', err);
+    }
+});
+</script>
+<script>
+document.getElementById('measurementForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = {
+        height: parseFloat(form.height.value),
+        weight: parseFloat(form.weight.value),
+        fat_percentage: parseFloat(form.fat_percentage.value) || null,
+        muscle_mass: parseFloat(form.muscle_mass.value) || null,
+        date: form.date.value,
+        notes: form.notes.value
+    };
+
+    const bmi = (data.weight / ((data.height / 100) ** 2)).toFixed(1);
+
+    const response = await fetch('/php/measurements.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (result.status === 'success') {
+        // Cập nhật tổng quan sức khỏe
+        document.querySelector('.text-green-600').textContent = bmi;
+        document.querySelector('.text-blue-600').textContent = data.fat_percentage ? `${data.fat_percentage}%` : '-';
+        document.querySelector('.text-purple-600').textContent = data.muscle_mass ? `${data.muscle_mass}kg` : '-';
+
+        // Cập nhật lời khuyên theo BMI
+        const recommendList = document.querySelector('.list-disc');
+        recommendList.innerHTML = '';
+
+        if (bmi < 18.5) {
+            recommendList.innerHTML += '<li>Tăng khẩu phần ăn nhiều đạm và chất béo lành mạnh</li>';
+            recommendList.innerHTML += '<li>Tập luyện nhẹ nhàng để tăng cơ</li>';
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            recommendList.innerHTML += '<li>Duy trì chế độ ăn và luyện tập hiện tại</li>';
+            recommendList.innerHTML += '<li>Ngủ đủ 7-8 tiếng mỗi đêm</li>';
+        } else if (bmi >= 25 && bmi < 29.9) {
+            recommendList.innerHTML += '<li>Giảm tinh bột và đường trong chế độ ăn</li>';
+            recommendList.innerHTML += '<li>Tập cardio ít nhất 4 lần/tuần</li>';
+        } else {
+            recommendList.innerHTML += '<li>Tham khảo chuyên gia dinh dưỡng</li>';
+            recommendList.innerHTML += '<li>Tăng cường vận động hàng ngày</li>';
+        }
+
+        // Làm mới form
+        form.reset();
+
+        // Gọi lại lịch sử đo
+        loadMeasurementHistory();
+    } else {
+        alert(result.message || 'Lỗi khi lưu chỉ số');
+    }
+});
+
+// Tải lại lịch sử đo
+async function loadMeasurementHistory() {
+    try {
+        const response = await fetch('/php/get_measurements.php');
+        const result = await response.json();
+
+        const tbody = document.getElementById('measurementHistory');
+        tbody.innerHTML = '';
+
+        if (result.status === 'success') {
+            result.data.forEach(row => {
+                const bmi = (row.height && row.height > 0)
+                    ? (row.weight / ((row.height / 100) ** 2)).toFixed(1)
+                    : '-';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="py-2 px-4 border-b text-center">${row.date}</td>
+                        <td class="py-2 px-4 border-b text-center">${row.weight}</td>
+                        <td class="py-2 px-4 border-b text-center">${row.height}</td>
+                        <td class="py-2 px-4 border-b text-center">${bmi}</td>
+                        <td class="py-2 px-4 border-b text-center">${row.fat_percentage ?? '-'}</td>
+                        <td class="py-2 px-4 border-b text-center">${row.muscle_mass ?? '-'}</td>
+                    </tr>`;
+            });
+        } else {
+            tbody.innerHTML = `<tr><td colspan="6" class="text-center py-4 text-gray-500">${result.message}</td></tr>`;
+        }
+    } catch (err) {
+        document.getElementById('measurementHistory').innerHTML = `
+            <tr><td colspan="6" class="text-center py-4 text-red-500">Lỗi tải dữ liệu</td></tr>`;
+        console.error('Lỗi khi tải lịch sử đo:', err);
+    }
+}
+
+// Gọi khi trang load
+document.addEventListener('DOMContentLoaded', loadMeasurementHistory);
+</script>
+
+
 </html>

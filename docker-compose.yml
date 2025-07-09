@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   web:
@@ -12,17 +12,10 @@ services:
 
   db:
     image: mysql:5.7
-    restart: always
     environment:
-      MYSQL_DATABASE: healthfit
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: healthfit
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
-      - ./docker/sql:/docker-entrypoint-initdb.d
-
-volumes:
-  mysql_data:
+      - ./docker/sql/init.sql:/docker-entrypoint-initdb.d/init.sql

@@ -96,3 +96,4 @@ document.getElementById('startMeasurementBtn')?.addEventListener('click', (e) =>
     e.preventDefault();
     window.location.href = 'measurement.html';
 });
+
