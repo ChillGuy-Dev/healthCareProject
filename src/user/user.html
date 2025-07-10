@@ -6,248 +6,252 @@
   <title>Thông tin người dùng - HealthFit</title>
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     body {
-      font-family: 'Inter', 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
-      background: linear-gradient(145deg, #6ee7b7 0%, #3b82f6 100%);
-      min-height: 100vh;
+      background: #f0fdf4;
+      color: #1f2937;
+    }
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      padding: 1rem 2rem;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      overflow-x: hidden;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 40px;
+    }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 2px solid #16a34a;
     }
     .container {
       max-width: 960px;
-      margin: 40px;
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(8px);
-    }
-    .container:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+      margin: 40px auto;
+      padding: 32px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
     h2 {
-      color: #1e3a8a;
-      font-size: 2.25rem;
-      margin-bottom: 32px;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      background: linear-gradient(to right, #1e3a8a, #3b82f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 2rem;
+      color: #16a34a;
+      margin-bottom: 20px;
+      text-align: center;
     }
-    h3 {
-      color: #1e3a8a;
-      font-size: 1.75rem;
-      margin: 40px 0 20px;
-      font-weight: 600;
-      position: relative;
-    }
-    h3::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(to right, #3b82f6, #6ee7b7);
-      border-radius: 2px;
-    }
-    canvas {
-      max-width: 100%;
-      border-radius: 12px;
-      background: #ffffff;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .info {
-      margin-top: 32px;
+    .info, .bmi-box, .history, .update-box {
+      background: #f9fafb;
+      border-left: 5px solid #16a34a;
       padding: 24px;
-      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-      border-radius: 16px;
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
+      border-radius: 12px;
+      margin-bottom: 32px;
     }
-    .info:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    .info p, .bmi-box p {
+      font-size: 1.1rem;
+      margin: 10px 0;
     }
-    .info p {
-      margin: 14px 0;
-      font-size: 1.15rem;
-      color: #1f2937;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .info p strong {
+    .info p strong, .bmi-box p strong {
       color: #1e3a8a;
-      font-weight: 600;
-      min-width: 100px;
+      width: 90px;
+      display: inline-block;
     }
-    .info a {
-      display: inline-flex;
-      align-items: center;
+    .logout-btn, .home-btn {
+      display: inline-block;
       margin-top: 20px;
-      padding: 12px 32px;
-      background: linear-gradient(90deg, #dc2626, #f43f5e);
+      padding: 12px 24px;
+      background: #16a34a;
       color: white;
-      border-radius: 10px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: 500;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
+      margin-right: 12px;
     }
-    .info a:hover {
-      background: linear-gradient(90deg, #b91c1c, #db2777);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(220, 38, 38, 0.3);
+    .logout-btn:hover, .home-btn:hover {
+      background: #15803d;
+    }
+    .history ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      font-size: 1.05rem;
+      margin-top: 12px;
+    }
+    canvas {
+      margin-top: 30px;
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 16px;
     }
     @media (max-width: 640px) {
       .container {
-        margin: 24px;
-        padding: 28px;
+        padding: 20px;
+        margin: 20px;
       }
       h2 {
-        font-size: 1.875rem;
-      }
-      h3 {
         font-size: 1.5rem;
-      }
-      .info p {
-        font-size: 1rem;
-      }
-      .info a {
-        padding: 10px 24px;
-        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Xin chào, <span id="userName">Người dùng</span></h2>
 
-    <div class="info">
-      <p><strong>Email:</strong> <span id="userEmail">loading...</span></p>
-      <p><strong>Vai trò:</strong> <span id="userRole">loading...</span></p>
-      <a href="/php/logout.php" class="logout-btn">Đăng xuất</a>
-    </div>
+<header>
+  <div class="logo">
+    <img src="/images/logo.jpg" alt="HealthFit">
+    <h1 class="text-xl font-bold text-green-600">HealthFit</h1>
+  </div>
+  <img src="https://megaweb.vn/blog/uploads/images/meme-meo-cute-1.jpg" alt="Avatar" class="avatar" />
+</header>
 
-    <h3>Tiến trình sức khỏe</h3>
-    <canvas id="progressChart"></canvas>
+<div class="container">
+  <h2>Xin chào, <span id="userName">Người dùng</span></h2>
+
+  <div class="info">
+    <p><strong>Email:</strong> <span id="userEmail">loading...</span></p>
+    <p><strong>Vai trò:</strong> <span id="userRole">loading...</span></p>
+    <a href="/html/index.html" class="home-btn"><i class="fas fa-home"></i> Trang chủ</a>
+    <a href="/php/logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
   </div>
 
-  <script>
-    // Lấy dữ liệu từ local/sessionStorage
-    document.getElementById('userName').innerText = sessionStorage.getItem('name') || 'Người dùng';
-    document.getElementById('userEmail').innerText = sessionStorage.getItem('email') || 'chưa rõ';
-    document.getElementById('userRole').innerText = sessionStorage.getItem('role') || 'user';
+  <div class="bmi-box">
+    <h3 style="color:#1e3a8a; font-size: 1.4rem;">Chỉ số BMI gần nhất</h3>
+    <p><strong>Cân nặng:</strong> <span id="latestWeight">...</span> kg</p>
+    <p><strong>Chiều cao:</strong> <span id="latestHeight">...</span> m</p>
+    <p><strong>BMI:</strong> <span id="latestBMI">...</span></p>
+  </div>
 
-    const ctx = document.getElementById('progressChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
-        datasets: [
-          {
-            label: 'Cân nặng (kg)',
-            data: [68, 67.5, 67.2, 66.8, 66.5],
-            borderColor: 'rgb(59, 130, 246)',
-            backgroundColor: 'rgba(59, 130, 246, 0.2)',
-            fill: true,
-            tension: 0.4,
-            pointRadius: 5,
-            pointHoverRadius: 8,
-            pointBackgroundColor: '#ffffff',
-            pointBorderColor: 'rgb(59, 130, 246)',
-            pointBorderWidth: 2
-          },
-          {
-            label: 'Tỷ lệ mỡ (%)',
-            data: [22, 21.5, 21, 20.8, 20.5],
-            borderColor: 'rgb(244, 63, 94)',
-            backgroundColor: 'rgba(244, 63, 94, 0.2)',
-            fill: true,
-            tension: 0.4,
-            pointRadius: 5,
-            pointHoverRadius: 8,
-            pointBackgroundColor: '#ffffff',
-            pointBorderColor: 'rgb(244, 63, 94)',
-            pointBorderWidth: 2
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: {
-              font: {
-                size: 16,
-                weight: '500'
-              },
-              padding: 24,
-              boxWidth: 12,
-              usePointStyle: true
-            }
-          },
-          title: {
-            display: true,
-            text: 'Theo dõi sức khỏe',
-            font: {
-              size: 20,
-              weight: '600'
-            },
-            color: '#1e3a8a',
-            padding: {
-              top: 10,
-              bottom: 24
-            }
-          },
-          tooltip: {
-            backgroundColor: 'rgba(0,0,0,0.8)',
-            titleFont: { size: 14 },
-            bodyFont: { size: 12 },
-            padding: 12,
-            cornerRadius: 8
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: false,
-            grid: {
-              color: 'rgba(0,0,0,0.05)',
-              lineWidth: 2
-            },
-            ticks: {
-              font: { size: 12 },
-              color: '#1f2937'
-            }
-          },
-          x: {
-            grid: {
-              color: 'rgba(0,0,0,0.05)',
-              lineWidth: 2
-            },
-            ticks: {
-              font: { size: 12 },
-              color: '#1f2937'
-            }
-          }
-        },
-        animation: {
-          duration: 1000,
-          easing: 'easeOutQuart'
+  <div class="update-box">
+    <h3 style="color:#1e3a8a; font-size: 1.4rem;">Cập nhật chỉ số</h3>
+    <form id="updateForm">
+      <p><strong>Chiều cao:</strong> <input type="number" step="0.01" id="height" required></p>
+      <p><strong>Cân nặng:</strong> <input type="number" step="0.1" id="weight" required></p>
+      <button type="submit" class="logout-btn">Lưu chỉ số</button>
+    </form>
+  </div>
+
+  <div class="history">
+    <h3 style="color:#1e3a8a; font-size: 1.4rem;">Lịch sử hoạt động</h3>
+    <ul id="activityList"><li>Đang tải...</li></ul>
+  </div>
+
+  <h3 style="font-size: 1.5rem; color: #1e3a8a;">Biểu đồ sức khỏe</h3>
+  <canvas id="progressChart"></canvas>
+</div>
+
+<script>
+let email = '';
+
+fetch('/php/get_user_info.php')
+  .then(res => res.json())
+  .then(data => {
+    if (data.status !== 'success') {
+      window.location.href = '/html/index.html';
+      return;
+    }
+
+    document.getElementById('userName').innerText = data.name;
+    document.getElementById('userEmail').innerText = data.email;
+    document.getElementById('userRole').innerText = data.role;
+    email = data.email;
+
+    // Lấy chỉ số gần nhất
+    fetch('/php/get_user_measurements.php')
+      .then(res => res.json())
+      .then(result => {
+        if (result.status === 'success' && result.data) {
+          const { weight, height } = result.data;
+          const bmi = (weight / (height * height)).toFixed(2);
+          let label = 'Bình thường';
+          if (bmi < 18.5) label = 'Thiếu cân';
+          else if (bmi < 24.9) label = 'Bình thường';
+          else if (bmi < 29.9) label = 'Thừa cân';
+          else label = 'Béo phì';
+
+          document.getElementById('latestWeight').innerText = weight;
+          document.getElementById('latestHeight').innerText = height;
+          document.getElementById('latestBMI').innerHTML = `${bmi} <small style="color:gray;">(${label})</small>`;
         }
+      });
+
+    // Lịch sử hoạt động
+    fetch('/php/get_user_activities.php')
+      .then(res => res.json())
+      .then(result => {
+        const ul = document.getElementById('activityList');
+        ul.innerHTML = '';
+        if (result.status === 'success' && result.activities.length > 0) {
+          result.activities.forEach(act => {
+            const li = document.createElement('li');
+            li.textContent = `${act.date}: ${act.action}`;
+            ul.appendChild(li);
+          });
+        } else {
+          ul.innerHTML = '<li>Chưa có hoạt động nào</li>';
+        }
+      });
+  });
+
+// Cập nhật chỉ số
+document.getElementById('updateForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const height = document.getElementById('height').value;
+  const weight = document.getElementById('weight').value;
+
+  fetch('/php/update_measurements.php', {
+    method: 'POST',
+    body: new URLSearchParams({ email, height, weight })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(data.message);
+    location.reload();
+  });
+});
+
+// Biểu đồ mẫu
+new Chart(document.getElementById('progressChart').getContext('2d'), {
+  type: 'line',
+  data: {
+    labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
+    datasets: [
+      {
+        label: 'Cân nặng (kg)',
+        data: [68, 67.5, 67.2, 66.8, 66.5],
+        borderColor: '#16a34a',
+        backgroundColor: 'rgba(22,163,74,0.2)',
+        fill: true,
+        tension: 0.4
+      },
+      {
+        label: 'Tỷ lệ mỡ (%)',
+        data: [22, 21.5, 21, 20.8, 20.5],
+        borderColor: '#f43f5e',
+        backgroundColor: 'rgba(244,63,94,0.2)',
+        fill: true,
+        tension: 0.4
       }
-    });
-  </script>
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: { beginAtZero: false }
+    }
+  }
+});
+</script>
+
 </body>
 </html>

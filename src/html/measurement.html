@@ -6,7 +6,7 @@
     <title>Đo chỉ số sức khỏe | HealthFit</title>
     
     <link rel="stylesheet" href="/assets/css/charts.css">
-    <link rel="stylesheet" href="/src/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -569,6 +569,30 @@
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     }
+    const data = {
+  height: parseFloat(document.getElementById('height').value),
+  weight: parseFloat(document.getElementById('weight').value),
+  fat_percentage: parseFloat(document.getElementById('fat_percent').value),
+  muscle_mass: parseFloat(document.getElementById('muscle_mass').value),
+  date: document.getElementById('date').value,
+  notes: document.getElementById('notes').value
+};
+
+fetch('/src/php/update_measurements.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+})
+.then(res => res.json())
+.then(res => {
+  if (res.status === 'success') {
+    alert('Đã lưu thành công');
+    location.reload();
+  } else {
+    alert('Lỗi: ' + res.message);
+  }
+});
+
 </script>
 
 </body>

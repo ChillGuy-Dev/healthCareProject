@@ -12,9 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch();
 
     if ($user && $password === $user['password']) {
+        // ✅ Gán đầy đủ session để dùng trong các file PHP khác
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['email'] = $user['email'];
 
         $redirect = ($user['role'] === 'admin') ? '/admin/admin.html' : '/html/index.html';
 

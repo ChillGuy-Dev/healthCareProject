@@ -4,6 +4,7 @@ CREATE DATABASE IF NOT EXISTS healthfit
 
 USE healthfit;
 
+-- Tạo bảng người dùng
 CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE IF NOT EXISTS users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Tạo bảng đo chỉ số sức khỏe
 CREATE TABLE IF NOT EXISTS measurements (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
@@ -23,31 +25,8 @@ CREATE TABLE IF NOT EXISTS measurements (
   muscle_mass FLOAT,
   date DATE NOT NULL,
   notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS feedback (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT,
-  name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  message TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
-);
-
--- Tạo tài khoản admin mặc định
-INSERT INTO users (name, email, password, role)
-SELECT 'Admin', 'admin@healthfit.vn', 'admin123', 'admin'
-WHERE NOT EXISTS (
-  SELECT 1 FROM users WHERE email = 'admin@healthfit.vn'
-);
-
--- Tạo bảng đánh giá cho các huấn luyện viên
-CREATE TABLE comments (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  trainer_id VARCHAR(50),
-  name VARCHAR(100),
-  message TEXT,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+--
