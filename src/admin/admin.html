@@ -4,246 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản trị | HealthFit</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="font-sans bg-gray-50">
-    <!-- Header (same as index.html) -->
-    <header class="bg-white shadow-md">
-        <!-- Same header content as index.html -->
+    <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+        <div class="text-xl font-bold text-green-600">HealthFit Admin</div>
+        <div class="flex items-center space-x-4">
+            <span class="text-gray-700">Xin chào, Admin</span>
+            <a href="/php/logout.php" class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded">Logout</a>
+
+        </div>
     </header>
 
-    <!-- Admin Dashboard -->
-    <section class="py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row gap-8">
-                <!-- Sidebar -->
-                <div class="md:w-1/4">
-                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-                        <div class="text-center mb-4">
-                            <img src="https://placehold.co/150x150" alt="Ảnh đại diện quản trị viên với phong cách chuyên nghiệp" class="w-24 h-24 rounded-full mx-auto mb-3">
-                            <h2 class="text-xl font-bold">Quản trị viên</h2>
-                            <p class="text-gray-600">Admin</p>
-                        </div>
-                        <ul class="space-y-3">
-                            <li>
-                                <a href="admin.html" class="flex items-center text-green-600 font-medium">
-                                    <i class="fas fa-tachometer-alt mr-3"></i>
-                                    <span>Bảng điều khiển</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center text-gray-700 hover:text-green-600">
-                                    <i class="fas fa-users mr-3"></i>
-                                    <span>Người dùng</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center text-gray-700 hover:text-green-600">
-                                    <i class="fas fa-chart-line mr-3"></i>
-                                    <span>Dữ liệu đo lường</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center text-gray-700 hover:text-green-600">
-                                    <i class="fas fa-newspaper mr-3"></i>
-                                    <span>Quản lý tin tức</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center text-gray-700 hover:text-green-600">
-                                    <i class="fas fa-cog mr-3"></i>
-                                    <span>Cài đặt</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Main Content -->
-                <div class="md:w-3/4">
-                    <!-- Statistics Cards -->
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-600 mb-2">Tổng người dùng</p>
-                                    <h3 class="text-2xl font-bold">1,245</h3>
-                                </div>
-                                <div class="bg-blue-100 p-3 rounded-full text-blue-600">
-                                    <i class="fas fa-users text-xl"></i>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <span class="text-green-600 flex items-center">
-                                    <i class="fas fa-arrow-up mr-1"></i>
-                                    <span>12% so với tháng trước</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-600 mb-2">Lần đo trong tháng</p>
-                                    <h3 class="text-2xl font-bold">4,532</h3>
-                                </div>
-                                <div class="bg-green-100 p-3 rounded-full text-green-600">
-                                    <i class="fas fa-ruler-combined text-xl"></i>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <span class="text-green-600 flex items-center">
-                                    <i class="fas fa-arrow-up mr-1"></i>
-                                    <span>18% so với tháng trước</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-600 mb-2">Phản hồi mới</p>
-                                    <h3 class="text-2xl font-bold">42</h3>
-                                </div>
-                                <div class="bg-purple-100 p-3 rounded-full text-purple-600">
-                                    <i class="fas fa-comments text-xl"></i>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <span class="text-red-600 flex items-center">
-                                    <i class="fas fa-arrow-down mr-1"></i>
-                                    <span>5% so với tháng trước</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Charts -->
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h2 class="text-xl font-bold mb-4">Người dùng mới</h2>
-                            <canvas id="usersChart" height="250"></canvas>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h2 class="text-xl font-bold mb-4">Phân bố BMI</h2>
-                            <canvas id="bmiChart" height="250"></canvas>
-                        </div>
-                    </div>
-                    
-                    <!-- Recent Activity -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h2 class="text-xl font-bold mb-4">Hoạt động gần đây</h2>
-                        <div class="space-y-4">
-                            <div class="flex items-start pb-4 border-b">
-                                <div class="bg-blue-100 p-2 rounded-full mr-4">
-                                    <i class="fas fa-user-plus text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Người dùng mới đăng ký</p>
-                                    <p class="text-gray-600 text-sm">Nguyễn Thị B - 15 phút trước</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start pb-4 border-b">
-                                <div class="bg-green-100 p-2 rounded-full mr-4">
-                                    <i class="fas fa-ruler-combined text-green-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Đo chỉ số thành công</p>
-                                    <p class="text-gray-600 text-sm">Trần Văn C - 1 giờ trước</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start pb-4 border-b">
-                                <div class="bg-purple-100 p-2 rounded-full mr-4">
-                                    <i class="fas fa-comment text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Gửi phản hồi mới</p>
-                                    <p class="text-gray-600 text-sm">Lê Thị D - 3 giờ trước</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-yellow-100 p-2 rounded-full mr-4">
-                                    <i class="fas fa-exclamation-triangle text-yellow-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Báo cáo lỗi hệ thống</p>
-                                    <p class="text-gray-600 text-sm">Phạm Văn E - Hôm nay, 09:45</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <main class="py-6 px-4 container mx-auto">
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Sidebar -->
+            <aside class="md:w-1/4">
+                <nav class="bg-white rounded shadow-md p-4 space-y-4">
+                    <a href="admin.html" class="block text-green-600 font-semibold"><i class="fas fa-tachometer-alt mr-2"></i>Bảng điều khiển</a>
+                    <a href="users.html" class="block hover:text-green-600"><i class="fas fa-users mr-2"></i>Người dùng</a>
+                    <a href="measurements.html" class="block hover:text-green-600"><i class="fas fa-ruler-combined mr-2"></i>Chỉ số</a>
+                    <a href="feedback.html" class="block hover:text-green-600"><i class="fas fa-comment-dots mr-2"></i>Phản hồi</a>
+                    <a href="news.html" class="block hover:text-green-600"><i class="fas fa-newspaper mr-2"></i>Tin tức</a>
+                    <a href="equipment.html" class="block hover:text-green-600"><i class="fas fa-dumbbell mr-2"></i>Thiết bị</a>
+                    <a href="products.html" class="block hover:text-green-600"><i class="fas fa-box-open mr-2"></i>Sản phẩm</a>
+                    <a href="settings.html" class="block hover:text-green-600"><i class="fas fa-cog mr-2"></i>Cài đặt</a>
+                </nav>
+            </aside>
 
-    <!-- Footer (same as index.html) -->
-    <footer class="bg-gray-800 text-white py-12">
-        <!-- Same footer content as index.html -->
+            <!-- Main Dashboard -->
+            <section class="md:w-3/4 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white rounded shadow p-4">
+                        <h3 class="font-semibold text-gray-700">Tổng người dùng</h3>
+                        <p class="text-2xl font-bold text-blue-600">1,245</p>
+                    </div>
+                    <div class="bg-white rounded shadow p-4">
+                        <h3 class="font-semibold text-gray-700">Số lần đo</h3>
+                        <p class="text-2xl font-bold text-green-600">4,532</p>
+                    </div>
+                    <div class="bg-white rounded shadow p-4">
+                        <h3 class="font-semibold text-gray-700">Phản hồi mới</h3>
+                        <p class="text-2xl font-bold text-purple-600">42</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded shadow">
+                        <h4 class="font-bold text-gray-700 mb-2">Người dùng mới</h4>
+                        <canvas id="usersChart" height="200"></canvas>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <h4 class="font-bold text-gray-700 mb-2">Biểu đồ BMI</h4>
+                        <canvas id="bmiChart" height="200"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 text-center py-4 text-gray-600 mt-10">
+        &copy; 2025 HealthFit. All rights reserved.
     </footer>
 
-    <script src="js/app.js"></script>
     <script>
-    // Initialize admin dashboard charts
-    document.addEventListener('DOMContentLoaded', function() {
-        // Users Chart
+    function logout() {
+        fetch('/php/logout.php')
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.href = '/html/index.html';
+                }
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
         const usersCtx = document.getElementById('usersChart').getContext('2d');
         new Chart(usersCtx, {
             type: 'line',
             data: {
-                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5'],
+                labels: ['T1', 'T2', 'T3', 'T4', 'T5'],
                 datasets: [{
-                    label: 'Người dùng mới',
-                    data: [210, 190, 220, 250, 300],
+                    label: 'Người dùng',
+                    data: [150, 200, 250, 300, 400],
                     backgroundColor: 'rgba(59, 130, 246, 0.1)',
                     borderColor: 'rgba(59, 130, 246, 1)',
                     borderWidth: 2,
-                    tension: 0.3,
-                    fill: true
+                    fill: true,
+                    tension: 0.3
                 }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
             }
         });
-        
-        // BMI Chart
+
         const bmiCtx = document.getElementById('bmiChart').getContext('2d');
         new Chart(bmiCtx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ['Thiếu cân', 'Bình thường', 'Thừa cân', 'Béo phì'],
                 datasets: [{
-                    data: [15, 55, 20, 10],
+                    data: [15, 60, 20, 5],
                     backgroundColor: [
-                        'rgba(59, 130, 246, 0.7)',
-                        'rgba(16, 185, 129, 0.7)',
-                        'rgba(245, 158, 11, 0.7)',
-                        'rgba(239, 68, 68, 0.7)'
-                    ],
-                    borderColor: [
-                        'rgba(59, 130, 246, 1)',
-                        'rgba(16, 185, 129, 1)',
-                        'rgba(245, 158, 11, 1)',
-                        'rgba(239, 68, 68, 1)'
-                    ],
-                    borderWidth: 1
+                        '#60A5FA', '#34D399', '#FBBF24', '#EF4444'
+                    ]
                 }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'right',
-                    }
-                }
             }
         });
     });
