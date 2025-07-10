@@ -11,49 +11,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="font-sans bg-gray-50">
+    <!-- Header -->
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <img src="/images/logo.jpg" alt="HealthFit Logo - Chữ S khỏe mạnh màu xanh lá trên nền trắng" class="h-12">
+                <img src="/images/logo.jpg" alt="HealthFit Logo" class="h-12">
                 <h1 class="text-2xl font-bold text-green-600">HealthFit</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
-               <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
-                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium">Đo chỉ số</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 font-medium">Trang chủ</a>
+                <a href="measurement.html" class="text-gray-800 hover:text-green-600 font-medium active">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 font-medium">Hướng dẫn thiết bị</a>
-                <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium active">Tin tức</a>
+                <a href="news.html" class="text-gray-800 hover:text-green-600 font-medium">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 font-medium">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 font-medium">Sản phẩm</a>
                 <a href="feedback.html" class="text-gray-800 hover:text-green-600 font-medium">Góp ý</a>
             </nav>
-              <div class="flex items-center space-x-4">
-                                            <!-- Nút Đăng nhập (ẩn khi đã login) -->
-                        <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
 
-                        <!-- Icon người dùng (ẩn mặc định) -->
-                        <a id="userIcon" href="/user/user.html" class="hidden">
-                        <img src="https://megaweb.vn/blog/uploads/images/meme-meo-cute-1.jpg" alt="Avatar" class="w-10 h-10 rounded-full cursor-pointer border-2 border-green-600">
-                        </a>
+            <div class="flex items-center space-x-4">
+                <!-- Login Button -->
+                <button id="loginBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Đăng nhập</button>
 
-                    <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+                <!-- User Icon (hidden by default) -->
+                <a id="userIcon" href="/user/user.html" class="hidden">
+                    <img src="https://megaweb.vn/blog/uploads/images/meme-meo-cute-1.jpg" alt="Avatar" class="w-10 h-10 rounded-full cursor-pointer border-2 border-green-600">
+                </a>
 
+                <button id="menuBtn" class="md:hidden text-gray-800 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a>
+                <a href="index.html" class="text-gray-800 hover:text-green-600 py-2">Trang chủ</a> 
                 <a href="measurement.html" class="text-gray-800 hover:text-green-600 py-2">Đo chỉ số</a>
                 <a href="equipment.html" class="text-gray-800 hover:text-green-600 py-2">Hướng dẫn thiết bị</a>
-                <a href="news.html" class="text-gray-800 hover:text-green-600 py-2 active">Tin tức</a>
+                <a href="news.html" class="text-gray-800 hover:text-green-600 py-2">Tin tức</a>
                 <a href="trainers.html" class="text-gray-800 hover:text-green-600 py-2">Huấn luyện viên</a>
                 <a href="products.html" class="text-gray-800 hover:text-green-600 py-2">Sản phẩm</a>
                 <a href="feedback.html" class="text-gray-800 hover:text-green-600 font-medium">Góp ý</a>
             </div>
         </div>
     </header>
+
 
 
     <section class="py-12">
@@ -267,6 +269,7 @@
             </div>
         </div>
     </div>
+<script src="/assets/js/app.js"></script>  
 <script src="/assets/js/session_check.js"></script>
 </body>
 </html>

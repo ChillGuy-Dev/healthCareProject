@@ -30,15 +30,18 @@ img {
     height: auto;
 }
 
-/* Mobile Menu */
 #mobileMenu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: all 0.3s ease;
 }
 
-#mobileMenu.show {
-    max-height: 300px;
+#menuBtn {
+    cursor: pointer;
+}
+  
+@media (min-width: 768px) {
+    #mobileMenu {
+        display: none !important;
+    }
 }
 
 /* Card Hover Effects */
